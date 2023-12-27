@@ -17,3 +17,34 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
+import random
+
+
+class Teacher:
+    def __init__(self, schedule: list[list[str]]) -> None:
+        self.schedule = schedule
+        self.schedule[0] = [
+            random.choice(["TAKEN", "SPARE"]),
+            random.choice(["TAKEN", "SPARE"]),
+            random.choice(["TAKEN", "SPARE"]),
+            random.choice(["TAKEN", "SPARE"]),
+        ]
+
+        self.schedule[1] = [
+            random.choice(["TAKEN", "SPARE"]),
+            random.choice(["TAKEN", "SPARE"]),
+            random.choice(["TAKEN", "SPARE"]),
+            random.choice(["TAKEN", "SPARE"]),
+        ]
+        self.schedule[2] = [
+            self.schedule[0][1],
+            self.schedule[0][0],
+            self.schedule[0][3],
+            self.schedule[0][2],
+        ]
+        self.schedule[3] = [
+            self.schedule[1][1],
+            self.schedule[1][0],
+            self.schedule[1][3],
+            self.schedule[1][2],
+        ]
