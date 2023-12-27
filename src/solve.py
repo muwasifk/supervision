@@ -48,3 +48,9 @@ class Teacher:
             self.schedule[1][3],
             self.schedule[1][2],
         ]
+
+
+teachers: list[Teacher] = []
+for i in range(72):
+    cur = Teacher([[], [], [], []])
+    teachers.append(cur)
