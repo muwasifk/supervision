@@ -1,0 +1,91 @@
+<!-- templates/_base.html -->
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django + Tailwind CSS + Flowbite</title>
+
+    <link rel="stylesheet" href="{% static 'src/output.css' %}">
+
+
+</head>
+
+<body class = "flex flex-col h-screen">
+      
+
+        <nav class="font-mona border-gray-200 bg-black dark:bg-gray-800 dark:border-gray-700">
+                <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                  <a href="#" class="flex items-center  rtl:space-x-reverse">
+                      <span class="font-monaebold self-center text-2xl font-semibold whitespace-nowrap text-white">SuperVision</span>
+                  </a>
+                  <button data-collapse-toggle="navbar-solid-bg" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-solid-bg" aria-expanded="false">
+                      <span class="sr-only">Open main menu</span>
+                      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                      </svg>
+                  </button>
+                  <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
+                    <ul class="flex flex-col font-medium mt-4  bg-black border-l-gray-400 border-l-2 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
+                      <li>
+                        <a href="#" class="block py-2 px-3 md:p-0 text-white rounded md:hover:bg-transparent md:border-0" aria-current="page">Home</a>
+                      </li>
+                      <li>
+                        <a href="#" class="block py-2 px-3 md:p-0 text-white rounded md:hover:bg-transparent md:border-0">Services</a>
+                      </li>
+                      <li>
+                        <a href="#" class="block py-2 px-3 md:p-0 text-white rounded md:hover:bg-transparent md:border-0">Pricing</a>
+                      </li>
+                      <li>
+                        <a href="#" class="block py-2 px-3 md:p-0 text-white rounded md:hover:bg-transparent md:border-0">Contact</a>
+                      </li>
+                      <p class = "px-3 md:p-0 mx-4 text-white font-extrabold">|</p>
+                      
+                      <li>
+                        <a href="#" class="block py-2 pl-3 md:p-0 text-white rounded md:hover:bg-transparent md:border-0">Log In</a>
+                      </li>
+                      <p class = "px-3 md:p-0 text-gray-300">or</p>
+                      <li>
+                        <a href="#" class="block py-2 pl-3 md:p-0 text-white rounded md:hover:bg-transparent md:border-0">Sign Up</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+              
+
+    <div class="container mx-auto mt-4 flex-grow">
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+    <footer class="bg-black shadow dark:bg-gray-800">
+        <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+          <span class="text-sm text-white sm:text-center dark:text-gray-400">© 2023 Karan Chawla, Muhammad Wasif Kamran, Eric Sui. All Rights Reserved.
+        </span>
+        <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+            <li>
+                <a href="#" class="hover:underline me-4 md:me-6">About</a>
+            </li>
+            <li>
+                <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+            </li>
+            <li>
+                <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+            </li>
+            <li>
+                <a href="#" class="hover:underline">Contact</a>
+            </li>
+        </ul>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+</body>
+
+</html>

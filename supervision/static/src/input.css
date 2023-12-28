@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+        font-family: 'Mona Sans';
+        src: url('fonts/MonaSans-Regular.woff2') format('woff2');
+}
+
+@font-face {
+        font-family: 'Mona Sans Ebold';
+        src: url('fonts/MonaSans-ExtraBold.woff2') format('woff2');
+}
