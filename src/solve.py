@@ -56,10 +56,8 @@ class Teacher:
 
 teachers: list[Teacher] = []
 for i in range(75):
-    cur = Teacher("TEACH" + str(i), [[], [], [], []])
+    cur: Teacher = Teacher("TEACH" + str(i), [[], [], [], []])
     teachers.append(cur)
-    if cur.schedule == ["TAKEN", "TAKEN", "TAKEN", "TAKEN"]:
-        print(cur.schedule)
 
 teachers.append(
     Teacher(
