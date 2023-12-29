@@ -8,7 +8,8 @@ module.exports = {
           extend: {
                 fontFamily: {
                         mona: ["Mona Sans", "sans"],
-                        monaebold: ["Mona Sans Ebold", "sans"]
+                        monaebold: ["Mona Sans Ebold", "sans"],
+                        monamn: ["Mona Sans Medium Narrow", "sans"]
                 }
           },
         },
