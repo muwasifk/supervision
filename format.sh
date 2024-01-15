@@ -2,3 +2,4 @@
 
 mypy supervision/
 black supervision/
+echo "hi"
