@@ -54,7 +54,7 @@ ROOT_URLCONF = "supervision.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / 'templates'],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -74,13 +74,13 @@ WSGI_APPLICATION = "supervision.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': 'aws-0-us-west-1.pooler.supabase.com',
-        'NAME': 'postgres',
-        'USER': 'postgres.wumirxuozmjjednguidm',
-        'PORT': '5432',
-        'PASSWORD': 'CorrectHorseBatteryStaple>>1',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "HOST": "aws-0-us-west-1.pooler.supabase.com",
+        "NAME": "postgres",
+        "USER": "postgres.wumirxuozmjjednguidm",
+        "PORT": "5432",
+        "PASSWORD": "CorrectHorseBatteryStaple>>1",
     }
 }
 
