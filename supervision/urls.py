@@ -23,5 +23,6 @@ urlpatterns = [
     path("", views.IndexView.as_view(), name="index"),
     path("about/", views.AboutView.as_view(), name="about"),
     path("faq/", views.FAQView.as_view(), name="faq"),
-    path("register/", views.RegisterView.as_view(), name="register")
+    path("register/", views.RegisterView.as_view(), name="register"),
+    path("login/", views.LoginView.as_view(), name = "login")
 ]
