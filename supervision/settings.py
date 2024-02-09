@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -79,13 +79,13 @@ WSGI_APPLICATION = "supervision.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': env('DATABASE_ENGINE'),
-        'HOST': env('DATABASE_HOST'),
-        'NAME': env('DATABASE_NAME'),
-        'USER': env('DATABASE_USER'),
-        'PORT': env('DATABASE_PORT'),
-        'PASSWORD': env('DATABASE_PASSWORD'),
+    "default": {
+        "ENGINE": env("DATABASE_ENGINE"),
+        "HOST": env("DATABASE_HOST"),
+        "NAME": env("DATABASE_NAME"),
+        "USER": env("DATABASE_USER"),
+        "PORT": env("DATABASE_PORT"),
+        "PASSWORD": env("DATABASE_PASSWORD"),
     }
 }
 
