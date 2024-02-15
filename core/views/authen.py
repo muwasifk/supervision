@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, CreateView
 from django.contrib.auth.models import User 
 from django.contrib.auth import authenticate, login 
+from django.contrib.auth import logout
+from django.views.generic import RedirectView
 
 class RegisterView(TemplateView):
         template_name = "register.html"        
@@ -17,6 +19,9 @@ class RegisterView(TemplateView):
                 cpassword = data.get("cpassword")
 
                 user = User.objects.create_user(email, email, password)
+                user.first_name = fname
+                user.last_name = lname 
+                user.save() 
 
                 return render(request, self.template_name)
         
@@ -32,3 +37,19 @@ class LoginView(TemplateView):
                         login(request, user)
 
                 return render(request, self.template_name)
+
+class LogoutView(RedirectView):
+    """
+    A view that logout user and redirect to homepage.
+    """
+    permanent = False
+    query_string = True
+    pattern_name = 'index'
+
+    def get_redirect_url(self, *args, **kwargs):
+        """
+        Logout user and redirect to target url.
+        """
+        if self.request.user.is_authenticated:
+            logout(self.request)
+        return super(LogoutView, self).get_redirect_url(*args, **kwargs)

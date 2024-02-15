@@ -41,12 +41,17 @@
                 <li>
                   <p href="#" class="block rounded px-3 py-2 text-gray-900 md:border-0 md:p-0 dark:text-white">|</p>
                 </li>
+                {% if user.is_authenticated %}
+                <img src = "https://www.gravatar.com/avatar/799ef4798764c437acee6c92dc6ede21?d=retro" class="rounded-full" style = "height: 30px; width: 30px;"/>
+                {% else %}
                 <li>
-                  <a href="/login/" class="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500">SIGN IN</a>
-                </li>
-                <li>
-                  <a href="/register/" class="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500">SIGN UP</a>
-                </li>
+                        <a href="/login/" class="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500">SIGN IN</a>
+                      </li>
+                      <li>
+                        <a href="/register/" class="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500">SIGN UP</a>
+                      </li>
+                {% endif %}
+                
               </ul>
             </div>
           </div>

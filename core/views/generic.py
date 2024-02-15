@@ -13,3 +13,8 @@ class AboutView(TemplateView):
 
 class FAQView(TemplateView):
     template_name = "faq.html"
+
+class SettingsView(TemplateView): 
+    template_name = "settings.html"
+
+    
