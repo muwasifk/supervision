@@ -17,4 +17,5 @@ class FAQView(TemplateView):
 class SettingsView(TemplateView): 
     template_name = "settings.html"
 
-    
+class GenerateView(TemplateView): 
+    template_name = "generate.html"   

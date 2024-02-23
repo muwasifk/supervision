@@ -27,5 +27,6 @@ urlpatterns = [
     path("login/", views.LoginView.as_view(), name="login"),
     path("settings/", views.SettingsView.as_view(), name="settings"),
     path("logout/", views.LogoutView.as_view(), name="logout"),
+    path("generate/", views.GenerateView.as_view(), name="generate"),
     path("", include("allauth.urls")),
 ]
