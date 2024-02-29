@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from core import views
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -27,4 +28,6 @@ urlpatterns = [
     path("login/", views.LoginView.as_view(), name="login"),
     path("settings/", views.SettingsView.as_view(), name="settings"),
     path("logout/", views.LogoutView.as_view(), name="logout"),
+    path("change-password/", views.ChangePasswordView.as_view(), name="change"),
+    path("generate/", views.GenerateView.as_view(), name="generate"),
 ]

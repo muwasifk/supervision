@@ -35,6 +35,9 @@ class LoginView(TemplateView):
                 user = authenticate(username = email, password = password)
                 if user is not None: 
                         login(request, user)
+                
+
+                print(request)
 
                 return render(request, self.template_name)
 
@@ -53,3 +56,16 @@ class LogoutView(RedirectView):
         if self.request.user.is_authenticated:
             logout(self.request)
         return super(LogoutView, self).get_redirect_url(*args, **kwargs)
+
+class ChangePasswordView(RedirectView):
+    template_name = "change_password.html"
+    def post(self, request):
+        data = request.POST.dict()
+        old_password = data.get("password")
+        new_password = data.get("newpassword")
+        new_password_c = data.get("confpassword")
+
+        request.user.password = new_password 
+        request.user.save() 
+
+        return render(request, self.template_name) 
