@@ -7,9 +7,15 @@ from django.contrib.auth import logout
 from django.views.generic import RedirectView
 
 class RegisterView(TemplateView):
+        """
+        A view that allows the user to register
+        """
         template_name = "register.html"        
 
         def post(self, request):
+                """
+                Gets information about the user's email, name, and password and saves it into the database
+                """
                 data = request.POST.dict() 
 
                 email = data.get("email")
@@ -26,9 +32,15 @@ class RegisterView(TemplateView):
                 return render(request, self.template_name)
         
 class LoginView(TemplateView): 
-
+        """
+        A view that allows the user to login
+        """
         template_name = "login.html"
+
         def post(self, request):
+                """
+                Gets user information and authenticates it
+                """
                 data = request.POST.dict()
                 email = data.get("email")
                 password = data.get("password")
