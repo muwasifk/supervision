@@ -31,5 +31,4 @@ urlpatterns = [
     path("generate/", views.GenerateView.as_view(), name="generate"),
     path("", include("allauth.urls")),
     path("change-password/", views.ChangePasswordView.as_view(), name="change"),
-    path("generate/", views.GenerateView.as_view(), name="generate"),
 ]
