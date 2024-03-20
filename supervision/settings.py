@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'django.contrib.sites',
+    "verify_email.apps.VerifyEmailConfig",
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
