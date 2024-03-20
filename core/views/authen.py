@@ -13,45 +13,36 @@ class RegisterView(TemplateView):
         template_name = "register.html"
         @staticmethod
         def password_is_valid(password):
-                hasUpper = False
-                hasLower = False
-                hasSpecialCharacter = False
-                containsNumber = False
-                noSpace = True
-                if len(password) >= 8 and len(password) <= 32:
+                has_upper = False
+                has_lower = False
+                has_special_character = False
+                contains_number = False
+                no_space = True
+                if len(password) >= 8:
                         for i in range(len(password)):
                                 if password[i].isupper():
-                                        hasUpper = True
+                                        has_upper = True
                                 elif password[i].islower():
-                                        hasLower = True
+                                        has_lower = True
                                 if not password[i].isalnum() and not password[i].isspace():
-                                        hasSpecialCharacter = True
+                                        has_special_character = True
                                 if password[i].isspace():
-                                       noSpace = False
+                                       no_space = False
                                 if password[i].isdigit():
-                                        containsNumber = True
-                        if hasUpper == True and hasLower == True and hasSpecialCharacter == True and containsNumber == True and noSpace:
-                                return True
-                return False
+                                        contains_number = True
+                return has_upper and has_lower and has_special_character and contains_number and no_space
+
         @staticmethod
         def pword_match(password, cpassword):
-                match = True
-                if not password == cpassword:
-                        match = False
-                return match
+                return password == cpassword
+        
         @staticmethod
         def email_is_valid(email):
-                email_valid = True
-                if not "@" in email or not "." in email or " " in email:
-                        email_valid = False
-                if email_valid:
-                       return True
-                else:
-                       return False
+                return ("@" in email and "." in email and " " in email)
                
         def post(self, request):
                 """
-                Gets information about the user's email, name, and password and saves it into the database
+                Gets information about the user's email, name, and password and saves it into the database if valid
                 """
                 data = request.POST.dict() 
 
