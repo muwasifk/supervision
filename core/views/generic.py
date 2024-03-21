@@ -18,4 +18,10 @@ class SettingsView(TemplateView):
     template_name = "settings.html"
 
 class GenerateView(TemplateView): 
-    template_name = "generate.html"   
+    template_name = "generate.html"
+
+class RestrictionsView(TemplateView): 
+    template_name = "restrictions.html"
+
+class CalendarView(TemplateView): 
+    template_name = "calendar.html"

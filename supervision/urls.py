@@ -32,4 +32,7 @@ urlpatterns = [
     path("", include("allauth.urls")),
     path("change-password/", views.ChangePasswordView.as_view(), name="change"),
     path("teachers/", views.TeachersView.as_view(), name="teachers"),
+    path("restrictions/", views.RestrictionsView.as_view(), name="restrictions"),
+    path("calendar/", views.CalendarView.as_view(), name="calendar"),
+
 ]
