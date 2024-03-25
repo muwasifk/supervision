@@ -17,7 +17,7 @@ class RegisterView(TemplateView):
                 has_lower = False
                 has_special_character = False
                 contains_number = False
-                no_space = True
+                has_space = False
                 if len(password) >= 8:
                         for i in range(len(password)):
                                 if password[i].isupper():
@@ -27,10 +27,10 @@ class RegisterView(TemplateView):
                                 if not password[i].isalnum() and not password[i].isspace():
                                         has_special_character = True
                                 if password[i].isspace():
-                                       no_space = False
+                                       has_space = True
                                 if password[i].isdigit():
                                         contains_number = True
-                return has_upper and has_lower and has_special_character and contains_number and no_space
+                return has_upper and has_lower and has_special_character and contains_number and not has_space
 
         @staticmethod
         def pword_match(password, cpassword):
@@ -38,7 +38,7 @@ class RegisterView(TemplateView):
         
         @staticmethod
         def email_is_valid(email):
-                return ("@" in email and "." in email and " " in email)
+                return ("@" in email and "." in email and not  " " in email)
                
         def post(self, request):
                 """

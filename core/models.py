@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
+from django.contrib.auth.models import User
 
 class Schedule(models.Model):
         schedule_id = models.CharField(max_length=255)
@@ -16,5 +17,14 @@ class Teacher(models.Model):
         first_name = models.CharField(max_length = 255)
         last_name = models.CharField(max_length = 255)
         email = models.EmailField(max_length = 255)
-        contract = models.IntegerField()
-        schedule = ArrayField(models.CharField(max_length = 255), size = 8)
+        contract = models.CharField(max_length = 255)
+        schedule = models.CharField(max_length=255)
+
+class ScheduleList(models.Model):
+        email = models.EmailField(max_length = 255)
+        schedules = ArrayField(models.CharField(max_length=255), size = 0)
+
+"""
+u = User.objects.get(username='fsmith')
+freds_department = u.employee.department
+"""
