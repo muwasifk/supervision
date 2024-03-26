@@ -22,6 +22,3 @@ class GenerateView(TemplateView):
 
 class RestrictionsView(TemplateView): 
     template_name = "restrictions.html"
-
-class CalendarView(TemplateView): 
-    template_name = "calendar.html"
