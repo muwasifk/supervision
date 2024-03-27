@@ -4,7 +4,7 @@
 
 <section class="flex flex-col items-center mx-4 my-4">
   <div class="flex w-full items-center justify-between rounded-t-md bg-gray-200 p-3">
-    <div class="text-xl">March 2024</div>
+    <div class="text-xl">{{calendar_name1}}</div>
     <div class="rounded-sm bg-gray-100">
       <button class="px-3 py-1 hover:bg-gray-200"><i class="fa-solid fa-arrow-left"></i></button>
       <button class="px-3 py-1 hover:bg-gray-200"><i class="fa-solid fa-arrow-right"></i></button>
@@ -23,67 +23,241 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="text-left align-top">
-        <td class="h-24 border bg-gray-50 px-2">
-          27
-          <div>Hello</div>
-          <div>Hello</div>
-        </td>
-        <td class="h-24 border bg-gray-50 px-2">28</td>
-        <td class="h-24 border bg-gray-50 px-2">29</td>
-        <td class="h-24 border bg-gray-50 px-2">30</td>
-        <td class="h-24 border bg-gray-50 px-2">31</td>
-        <td class="h-24 border px-2">1</td>
-        {% if day == 1 %}
-        {{ test }}
-        {% endif %}
-        <td class="h-24 border px-2">2</td>
+      {{ calendar_string1 |safe }}    
+    </tbody>
+  </table>
+</section>
+
+<section class="flex flex-col items-center mx-4 my-4">
+  <div class="flex w-full items-center justify-between rounded-t-md bg-gray-200 p-3">
+    <div class="text-xl">{{calendar_name2}}</div>
+    <div class="rounded-sm bg-gray-100">
+      <button class="px-3 py-1 hover:bg-gray-200"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="px-3 py-1 hover:bg-gray-200"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+  <table class="w-full table-fixed text-sm text-gray-500">
+    <thead class="bg-gray-50 text-base uppercase text-gray-700">
+      <tr>
+        <th scope="col" class="border py-3">Sun</th>
+        <th scope="col" class="border py-3">Mon</th>
+        <th scope="col" class="border py-3">Tue</th>
+        <th scope="col" class="border py-3">Wed</th>
+        <th scope="col" class="border py-3">Thu</th>
+        <th scope="col" class="border py-3">Fri</th>
+        <th scope="col" class="border py-3">Sat</th>
       </tr>
-      <tr class="text-left align-top">
-        <td class="h-24 border px-2">3</td>
-        <td class="h-24 border px-2">4</td>
-        <td class="h-24 border px-2">5</td>
-        <td class="h-24 border px-2">6</td>
-        <td class="h-24 border px-2">7</td>
-        <td class="h-24 border px-2">8</td>
-        <td class="h-24 border px-2">9</td>
+    </thead>
+    <tbody>
+      {{ calendar_string2 |safe }}    
+    </tbody>
+  </table>
+</section>
+
+<section class="flex flex-col items-center mx-4 my-4">
+  <div class="flex w-full items-center justify-between rounded-t-md bg-gray-200 p-3">
+    <div class="text-xl">{{calendar_name3}}</div>
+    <div class="rounded-sm bg-gray-100">
+      <button class="px-3 py-1 hover:bg-gray-200"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="px-3 py-1 hover:bg-gray-200"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+  <table class="w-full table-fixed text-sm text-gray-500">
+    <thead class="bg-gray-50 text-base uppercase text-gray-700">
+      <tr>
+        <th scope="col" class="border py-3">Sun</th>
+        <th scope="col" class="border py-3">Mon</th>
+        <th scope="col" class="border py-3">Tue</th>
+        <th scope="col" class="border py-3">Wed</th>
+        <th scope="col" class="border py-3">Thu</th>
+        <th scope="col" class="border py-3">Fri</th>
+        <th scope="col" class="border py-3">Sat</th>
       </tr>
-      <tr class="text-left align-top">
-        <td class="h-24 border px-2">10</td>
-        <td class="h-24 border px-2">11</td>
-        <td class="h-24 border px-2">12</td>
-        <td class="h-24 border px-2">13</td>
-        <td class="h-24 border px-2">14</td>
-        <td class="h-24 border px-2">15</td>
-        <td class="h-24 border px-2">16</td>
+    </thead>
+    <tbody>
+      {{ calendar_string3 |safe }}    
+    </tbody>
+  </table>
+</section>
+
+<section class="flex flex-col items-center mx-4 my-4">
+  <div class="flex w-full items-center justify-between rounded-t-md bg-gray-200 p-3">
+    <div class="text-xl">{{calendar_name4}}</div>
+    <div class="rounded-sm bg-gray-100">
+      <button class="px-3 py-1 hover:bg-gray-200"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="px-3 py-1 hover:bg-gray-200"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+  <table class="w-full table-fixed text-sm text-gray-500">
+    <thead class="bg-gray-50 text-base uppercase text-gray-700">
+      <tr>
+        <th scope="col" class="border py-3">Sun</th>
+        <th scope="col" class="border py-3">Mon</th>
+        <th scope="col" class="border py-3">Tue</th>
+        <th scope="col" class="border py-3">Wed</th>
+        <th scope="col" class="border py-3">Thu</th>
+        <th scope="col" class="border py-3">Fri</th>
+        <th scope="col" class="border py-3">Sat</th>
       </tr>
-      <tr class="text-left align-top">
-        <td class="h-24 border px-2">17</td>
-        <td class="h-24 border px-2">18</td>
-        <td class="h-24 border px-2">19</td>
-        <td class="h-24 border px-2">20</td>
-        <td class="h-24 border px-2">21</td>
-        <td class="h-24 border px-2">22</td>
-        <td class="h-24 border px-2">23</td>
+    </thead>
+    <tbody>
+      {{ calendar_string4 |safe }}    
+    </tbody>
+  </table>
+</section>
+
+<section class="flex flex-col items-center mx-4 my-4">
+  <div class="flex w-full items-center justify-between rounded-t-md bg-gray-200 p-3">
+    <div class="text-xl">{{calendar_name5}}</div>
+    <div class="rounded-sm bg-gray-100">
+      <button class="px-3 py-1 hover:bg-gray-200"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="px-3 py-1 hover:bg-gray-200"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+  <table class="w-full table-fixed text-sm text-gray-500">
+    <thead class="bg-gray-50 text-base uppercase text-gray-700">
+      <tr>
+        <th scope="col" class="border py-3">Sun</th>
+        <th scope="col" class="border py-3">Mon</th>
+        <th scope="col" class="border py-3">Tue</th>
+        <th scope="col" class="border py-3">Wed</th>
+        <th scope="col" class="border py-3">Thu</th>
+        <th scope="col" class="border py-3">Fri</th>
+        <th scope="col" class="border py-3">Sat</th>
       </tr>
-      <tr class="text-left align-top">
-        <td class="h-24 border px-2">24</td>
-        <td class="h-24 border px-2">25</td>
-        <td class="h-24 border px-2">26</td>
-        <td class="h-24 border px-2">27</td>
-        <td class="h-24 border px-2">28</td>
-        <td class="h-24 border px-2">29</td>
-        <td class="h-24 border px-2">30</td>
+    </thead>
+    <tbody>
+      {{ calendar_string5 |safe }}    
+    </tbody>
+  </table>
+</section>
+
+<section class="flex flex-col items-center mx-4 my-4">
+  <div class="flex w-full items-center justify-between rounded-t-md bg-gray-200 p-3">
+    <div class="text-xl">{{calendar_name6}}</div>
+    <div class="rounded-sm bg-gray-100">
+      <button class="px-3 py-1 hover:bg-gray-200"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="px-3 py-1 hover:bg-gray-200"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+  <table class="w-full table-fixed text-sm text-gray-500">
+    <thead class="bg-gray-50 text-base uppercase text-gray-700">
+      <tr>
+        <th scope="col" class="border py-3">Sun</th>
+        <th scope="col" class="border py-3">Mon</th>
+        <th scope="col" class="border py-3">Tue</th>
+        <th scope="col" class="border py-3">Wed</th>
+        <th scope="col" class="border py-3">Thu</th>
+        <th scope="col" class="border py-3">Fri</th>
+        <th scope="col" class="border py-3">Sat</th>
       </tr>
-      <tr class="text-left align-top">
-        <td class="h-24 border px-2">31</td>
-        <td class="h-24 border bg-gray-50 px-2">1</td>
-        <td class="h-24 border bg-gray-50 px-2">2</td>
-        <td class="h-24 border bg-gray-50 px-2">3</td>
-        <td class="h-24 border bg-gray-50 px-2">4</td>
-        <td class="h-24 border bg-gray-50 px-2">5</td>
-        <td class="h-24 border bg-gray-50 px-2">6</td>
+    </thead>
+    <tbody>
+      {{ calendar_string6 |safe }}    
+    </tbody>
+  </table>
+</section>
+
+<section class="flex flex-col items-center mx-4 my-4">
+  <div class="flex w-full items-center justify-between rounded-t-md bg-gray-200 p-3">
+    <div class="text-xl">{{calendar_name7}}</div>
+    <div class="rounded-sm bg-gray-100">
+      <button class="px-3 py-1 hover:bg-gray-200"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="px-3 py-1 hover:bg-gray-200"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+  <table class="w-full table-fixed text-sm text-gray-500">
+    <thead class="bg-gray-50 text-base uppercase text-gray-700">
+      <tr>
+        <th scope="col" class="border py-3">Sun</th>
+        <th scope="col" class="border py-3">Mon</th>
+        <th scope="col" class="border py-3">Tue</th>
+        <th scope="col" class="border py-3">Wed</th>
+        <th scope="col" class="border py-3">Thu</th>
+        <th scope="col" class="border py-3">Fri</th>
+        <th scope="col" class="border py-3">Sat</th>
       </tr>
+    </thead>
+    <tbody>
+      {{ calendar_string7 |safe }}    
+    </tbody>
+  </table>
+</section>
+
+<section class="flex flex-col items-center mx-4 my-4">
+  <div class="flex w-full items-center justify-between rounded-t-md bg-gray-200 p-3">
+    <div class="text-xl">{{calendar_name8}}</div>
+    <div class="rounded-sm bg-gray-100">
+      <button class="px-3 py-1 hover:bg-gray-200"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="px-3 py-1 hover:bg-gray-200"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+  <table class="w-full table-fixed text-sm text-gray-500">
+    <thead class="bg-gray-50 text-base uppercase text-gray-700">
+      <tr>
+        <th scope="col" class="border py-3">Sun</th>
+        <th scope="col" class="border py-3">Mon</th>
+        <th scope="col" class="border py-3">Tue</th>
+        <th scope="col" class="border py-3">Wed</th>
+        <th scope="col" class="border py-3">Thu</th>
+        <th scope="col" class="border py-3">Fri</th>
+        <th scope="col" class="border py-3">Sat</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ calendar_string8 |safe }}    
+    </tbody>
+  </table>
+</section>
+
+<section class="flex flex-col items-center mx-4 my-4">
+  <div class="flex w-full items-center justify-between rounded-t-md bg-gray-200 p-3">
+    <div class="text-xl">{{calendar_name9}}</div>
+    <div class="rounded-sm bg-gray-100">
+      <button class="px-3 py-1 hover:bg-gray-200"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="px-3 py-1 hover:bg-gray-200"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+  <table class="w-full table-fixed text-sm text-gray-500">
+    <thead class="bg-gray-50 text-base uppercase text-gray-700">
+      <tr>
+        <th scope="col" class="border py-3">Sun</th>
+        <th scope="col" class="border py-3">Mon</th>
+        <th scope="col" class="border py-3">Tue</th>
+        <th scope="col" class="border py-3">Wed</th>
+        <th scope="col" class="border py-3">Thu</th>
+        <th scope="col" class="border py-3">Fri</th>
+        <th scope="col" class="border py-3">Sat</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ calendar_string9 |safe }}    
+    </tbody>
+  </table>
+</section>
+
+<section class="flex flex-col items-center mx-4 my-4">
+  <div class="flex w-full items-center justify-between rounded-t-md bg-gray-200 p-3">
+    <div class="text-xl">{{calendar_name10}}</div>
+    <div class="rounded-sm bg-gray-100">
+      <button class="px-3 py-1 hover:bg-gray-200"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="px-3 py-1 hover:bg-gray-200"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+  <table class="w-full table-fixed text-sm text-gray-500">
+    <thead class="bg-gray-50 text-base uppercase text-gray-700">
+      <tr>
+        <th scope="col" class="border py-3">Sun</th>
+        <th scope="col" class="border py-3">Mon</th>
+        <th scope="col" class="border py-3">Tue</th>
+        <th scope="col" class="border py-3">Wed</th>
+        <th scope="col" class="border py-3">Thu</th>
+        <th scope="col" class="border py-3">Fri</th>
+        <th scope="col" class="border py-3">Sat</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ calendar_string10 |safe }}    
     </tbody>
   </table>
 </section>
