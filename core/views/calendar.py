@@ -116,11 +116,14 @@ for teacher in sorted_teachers:
 
 print(construction)
 
+
+global_iterator = 0
 class CalendarView(TemplateView):
     """
     A view that allows the user to see the teachers in a calendar
     """
 
+    
     @staticmethod
     def generate_calendar(day, month, year):
         calendar_string = '<tr class="text-left align-top">'
@@ -142,13 +145,21 @@ class CalendarView(TemplateView):
         day_name = datetime.date(year, month, day).weekday()
         empty_days = (day_name + 1) % 7
         iterator = 1
+        global global_iterator
         max_days = monthrange(year, month)
 
         for x in range(empty_days):
             calendar_string += ' <td class="h-24 border bg-gray-50 px-2"></td>'
         for y in range(7 - empty_days):
-            calendar_string += f' <td class="h-24 border px-2">{iterator}</td>'
+            if datetime.date(year, month, iterator).weekday() <= 4:
+                current = construction[global_iterator%12] 
+                calendar_string += f' <td class="h-24 border px-2">{iterator} <br> {current}</td>'
+                global_iterator += 1
+            else:
+                calendar_string += f' <td class="h-24 border px-2">{iterator}</td>'
             iterator += 1
+            
+            
 
         calendar_string += " </tr>"
 
@@ -158,7 +169,12 @@ class CalendarView(TemplateView):
             calendar_string += ' <tr class="text-left align-top">'
             for k in range(7):
                 if iterator <= max_days[1]:
-                    calendar_string += f' <td class="h-24 border px-2">{iterator}</td>'
+                    if datetime.date(year, month, iterator).weekday() <= 4:
+                        current = construction[global_iterator%12] 
+                        calendar_string += f' <td class="h-24 border px-2">{iterator} <br> {current}</td>'
+                        global_iterator += 1
+                    else: 
+                        calendar_string += f' <td class="h-24 border px-2">{iterator}</td>'
                 else:
                     calendar_string += ' <td class="h-24 border bg-gray-50 px-2"></td>'
                 iterator += 1
