@@ -153,10 +153,10 @@ class CalendarView(TemplateView):
         for y in range(7 - empty_days):
             if datetime.date(year, month, iterator).weekday() <= 4:
                 current = construction[global_iterator%12] 
-                calendar_string += f' <td class="h-24 border px-2">{iterator} <br> {current}</td>'
+                calendar_string += f' <td class="h-24 border px-2 py-1">{iterator} <br><br> {current[0]} <br> {current[1]} <br> {current[2]} <br> {current[3]} <br> {current[4]} <br> {current[5]}</td>'
                 global_iterator += 1
             else:
-                calendar_string += f' <td class="h-24 border px-2">{iterator}</td>'
+                calendar_string += f' <td class="h-24 border px-2 py-1">{iterator}</td>'
             iterator += 1
             
             
@@ -171,10 +171,10 @@ class CalendarView(TemplateView):
                 if iterator <= max_days[1]:
                     if datetime.date(year, month, iterator).weekday() <= 4:
                         current = construction[global_iterator%12] 
-                        calendar_string += f' <td class="h-24 border px-2">{iterator} <br> {current}</td>'
+                        calendar_string += f' <td class="h-24 border px-2 py-1">{iterator} <br><br> {current[0]} <br> {current[1]} <br> {current[2]} <br> {current[3]} <br> {current[4]} <br> {current[5]}</td>'
                         global_iterator += 1
                     else: 
-                        calendar_string += f' <td class="h-24 border px-2">{iterator}</td>'
+                        calendar_string += f' <td class="h-24 border px-2 py-1">{iterator}</td>'
                 else:
                     calendar_string += ' <td class="h-24 border bg-gray-50 px-2"></td>'
                 iterator += 1
