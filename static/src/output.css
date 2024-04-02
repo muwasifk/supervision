@@ -1126,10 +1126,6 @@ input[type="range"]::-ms-fill-lower {
   height: 2.5rem;
 }
 
-.h-24 {
-  height: 6rem;
-}
-
 .h-3 {
   height: 0.75rem;
 }
@@ -1811,10 +1807,6 @@ input[type="range"]::-ms-fill-lower {
 
 .text-right {
   text-align: right;
-}
-
-.align-top {
-  vertical-align: top;
 }
 
 .text-2xl {
