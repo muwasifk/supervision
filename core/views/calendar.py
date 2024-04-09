@@ -68,6 +68,7 @@ class CalendarView(TemplateView):
         year = 2024
         month = 9
         day = 1
+        # Generating strings for the calendar
         calendar_string1, calendar_name1 = self.generate_calendar(day, month, year)
         calendar_string2, calendar_name2 = self.generate_calendar(day, month + 1, year)
         calendar_string3, calendar_name3 = self.generate_calendar(day, month + 2, year)
@@ -101,6 +102,7 @@ class CalendarView(TemplateView):
         ]
         test = '<p class="font-bold">happy</p> <p class="font-bold">happy</p>'  # (calendar_name[get_teachers(1, teachers_list)[0]])
         return render(
+            # Returning the calendar strings for the frontend
             request,
             "calendar.html",
             {
@@ -128,7 +130,7 @@ class CalendarView(TemplateView):
                 "calendar_name10": calendar_name10,
             },
         )
-
+    # Not sure what to comment for these 2
     @staticmethod
     def calendar_name(name, role):
         return name, "-", role
