@@ -114,8 +114,6 @@ for teacher in sorted_teachers:
             if choice in alt_teacher.potential:
                 alt_teacher.potential.remove(choice)
 
-print(construction)
-
 
 global_iterator = 0
 class CalendarView(TemplateView):
@@ -209,7 +207,6 @@ class CalendarView(TemplateView):
             day, month - 3, year + 1
         )
 
-        print("yrdy")
         teachers_list = [
             ["John", "Cafeteria"],
             ["Rex", "Weight Room"],
