@@ -1814,11 +1814,6 @@ input[type="range"]::-ms-fill-lower {
   line-height: 2rem;
 }
 
-.align-top {
-  -webkit-vertical-align: top;
-  vertical-align: top;
-}
-
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
