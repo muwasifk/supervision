@@ -26,9 +26,3 @@ class Teacher(models.Model):
 class ScheduleList(models.Model):
     email = models.EmailField(max_length=255)
     schedules = ArrayField(models.CharField(max_length=255), size=0)
-
-
-"""
-u = User.objects.get(username='fsmith')
-freds_department = u.employee.department
-"""

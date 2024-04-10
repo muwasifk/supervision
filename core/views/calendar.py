@@ -119,16 +119,11 @@ print(construction)
 
 global_iterator = 0
 class CalendarView(TemplateView):
-    """
-    A view that allows the user to see the teachers in a calendar
-    """
 
-    
     @staticmethod
     def generate_calendar(day, month, year):
         """
-        A function to generate the calendar used in the schedule
-
+        Generates a calendar template for a given month 
         """
         # Creating a template string for what should be displayed on the frontend
         calendar_string = '<tr class="text-left align-top">'
@@ -170,7 +165,7 @@ class CalendarView(TemplateView):
 
         calendar_string += " </tr>"
 
-        # Setting up tailwind code to fill in the days of the calendar (the non-blank ones)
+        # Generating the HTML code to be injected 
         for i in range(5):
             if iterator > max_days[1]:
                 continue
@@ -187,7 +182,7 @@ class CalendarView(TemplateView):
                     calendar_string += ' <td class="h-24 border bg-gray-50 px-2"></td>'
                 iterator += 1
             calendar_string += " </tr>"
-        # Getting the appropiate month name of and returning the string with the css code and the name (month + year)
+        # Getting the appropiate month name 
         calendar_name = f"{month_name[month]} {year}"
         return calendar_string, calendar_name
 
@@ -196,6 +191,7 @@ class CalendarView(TemplateView):
         month = 9
         day = 1
         # Generating strings for the calendar
+        # TODO: Refactor this so it's more maintainable 
         calendar_string1, calendar_name1 = self.generate_calendar(day, month, year)
         calendar_string2, calendar_name2 = self.generate_calendar(day, month + 1, year)
         calendar_string3, calendar_name3 = self.generate_calendar(day, month + 2, year)
@@ -219,7 +215,6 @@ class CalendarView(TemplateView):
             day, month - 3, year + 1
         )
 
-        print("yrdy")
         teachers_list = [
             ["John", "Cafeteria"],
             ["Rex", "Weight Room"],
@@ -257,7 +252,7 @@ class CalendarView(TemplateView):
                 "calendar_name10": calendar_name10,
             },
         )
-    # Not sure what to comment for these 2
+    
     @staticmethod
     def calendar_name(name, role):
         return name, "-", role
