@@ -126,6 +126,11 @@ class CalendarView(TemplateView):
     
     @staticmethod
     def generate_calendar(day, month, year):
+        """
+        A function to generate the calendar used in the schedule
+
+        """
+        # Creating a template string for what should be displayed on the frontend
         calendar_string = '<tr class="text-left align-top">'
         month_name = [
             "Unknown",
@@ -142,12 +147,14 @@ class CalendarView(TemplateView):
             "November",
             "December",
         ]
+        # Using the datetime library to set up the weekday counting mechanism (to determine if its a monday, tuesday, etc)
         day_name = datetime.date(year, month, day).weekday()
         empty_days = (day_name + 1) % 7
         iterator = 1
         global global_iterator
         max_days = monthrange(year, month)
 
+        # Setting days at the end of the month that should be blank to be blank using tailwind.
         for x in range(empty_days):
             calendar_string += ' <td class="h-24 border bg-gray-50 px-2"></td>'
         for y in range(7 - empty_days):
@@ -163,6 +170,7 @@ class CalendarView(TemplateView):
 
         calendar_string += " </tr>"
 
+        # Setting up tailwind code to fill in the days of the calendar (the non-blank ones)
         for i in range(5):
             if iterator > max_days[1]:
                 continue
@@ -179,6 +187,7 @@ class CalendarView(TemplateView):
                     calendar_string += ' <td class="h-24 border bg-gray-50 px-2"></td>'
                 iterator += 1
             calendar_string += " </tr>"
+        # Getting the appropiate month name of and returning the string with the css code and the name (month + year)
         calendar_name = f"{month_name[month]} {year}"
         return calendar_string, calendar_name
 
@@ -186,6 +195,7 @@ class CalendarView(TemplateView):
         year = 2024
         month = 9
         day = 1
+        # Generating strings for the calendar
         calendar_string1, calendar_name1 = self.generate_calendar(day, month, year)
         calendar_string2, calendar_name2 = self.generate_calendar(day, month + 1, year)
         calendar_string3, calendar_name3 = self.generate_calendar(day, month + 2, year)
@@ -219,6 +229,7 @@ class CalendarView(TemplateView):
         ]
         test = '<p class="font-bold">happy</p> <p class="font-bold">happy</p>'  # (calendar_name[get_teachers(1, teachers_list)[0]])
         return render(
+            # Returning the calendar strings for the frontend
             request,
             "calendar.html",
             {
@@ -246,7 +257,7 @@ class CalendarView(TemplateView):
                 "calendar_name10": calendar_name10,
             },
         )
-
+    # Not sure what to comment for these 2
     @staticmethod
     def calendar_name(name, role):
         return name, "-", role

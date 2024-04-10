@@ -5,7 +5,6 @@ import hashlib
 
 from core.models import Schedule, ScheduleList, Teacher
 
-
 class GenerateView(TemplateView):
     template_name = "generate.html"
 

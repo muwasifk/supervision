@@ -16,12 +16,22 @@ class RegisterView(TemplateView):
 
     @staticmethod
     def password_is_valid(password):
+        """
+        A function that checks if the inputted password is valid
+        Args: 
+            password (string): the password to be verified
+        Returns:
+            True or False depending on if the password is valid
+        """
+        # Creating variables for the conditions that need to be met for a password to be valid.
         has_upper = False
         has_lower = False
         has_special_character = False
         contains_number = False
         has_space = False
+        # Making sure that the password is at least 8 characters
         if len(password) >= 8:
+            # Checking each character to make sure the conditions are met
             for i in range(len(password)):
                 if password[i].isupper():
                     has_upper = True
@@ -33,6 +43,7 @@ class RegisterView(TemplateView):
                     has_space = True
                 if password[i].isdigit():
                     contains_number = True
+        # Returning a boolean based on if the password meets the conditions or not.
         return (
             has_upper
             and has_lower
@@ -43,40 +54,51 @@ class RegisterView(TemplateView):
 
     @staticmethod
     def pword_match(password, cpassword):
+        """
+        Checks if the password and confirm password are the same
+        """
         return password == cpassword
 
     @staticmethod
     def email_is_valid(email):
+        """
+        Checks if there is an @ and . in the email. Also makes sure there's no spaces.
+        """
         return "@" in email and "." in email and not " " in email
 
     def post(self, request):
         """
         Gets information about the user's email, name, and password and saves it into the database if valid
         """
+        # Storing the information inputted by the user in variables
         data = request.POST.dict()
-
         email = data.get("email")
         fname = data.get("fname")
         lname = data.get("lname")
         password = data.get("password")
         cpassword = data.get("cpassword")
 
+        # Checking that the email and password are valid and that the passwords match.
         if (
             RegisterView.email_is_valid(email)
             and RegisterView.password_is_valid(password)
             and RegisterView.pword_match(password, cpassword)
         ):
+            # Here, we attempt to add the user to the database. If this email is in use, it will throw an error and the program goes to the except case.
             try:
+                # Uploading the user's information
                 user = User.objects.create_user(email, email, password)
                 user.first_name = fname
                 user.last_name = lname
                 user.save()
                 return render(request, self.template_name)
             except:
+                # Setting the state to 4 so that an error toast appears on the website (see register.html)
                 return render(
                     request, self.template_name, {"state": 4}
                 )  # 4 --> email used
 
+        # Here, we use "state" to determine which error toast should be shown.
         elif not RegisterView.email_is_valid(email):
             return render(
                 request, self.template_name, {"state": 1}
@@ -102,14 +124,14 @@ class LoginView(TemplateView):
         """
         Gets user information and authenticates it
         """
+        # Putting the email and password into variables
         data = request.POST.dict()
         email = data.get("email")
         password = data.get("password")
+        # Using authenticate to make sure that the password is correct and that the email is registered.
         user = authenticate(username=email, password=password)
         if user is not None:
             login(request, user)
-
-        print(request)
 
         return render(request, self.template_name)
 
@@ -134,7 +156,7 @@ class LogoutView(RedirectView):
 
 class ChangePasswordView(RedirectView):
     template_name = "change_password.html"
-
+    # Saving the new password to the database after checking that the user knows the old password
     def post(self, request):
         data = request.POST.dict()
         old_password = data.get("password")
