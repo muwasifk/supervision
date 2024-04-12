@@ -64,31 +64,50 @@ class TeachersView(TemplateView):
         return render(request, self.template_name, {"rows": rows})
 
     def post(self, request):
-
-        # data = request.POST.dict()
-        # row = ScheduleList.objects.get(email=request.user.email)
-        # teacher = Teacher(
-            # schedule_id=row.schedules[-1],
-            # first_name=data.get("fname"),
-            # last_name=data.get("lname"),
-            # email=data.get("email"),
-            # contract=data.get("contract"),
-            # schedule=data.get("schedule"),
-
-        with open('example.csv', 'r') as file:
-            row = ScheduleList.objects.get(email=request.user.email)
-            data = csv.reader(file)
-            for rows in data:
-                print(rows)
+        if "contract" in request.POST:
+                data = request.POST.dict()
+                row = ScheduleList.objects.get(email=request.user.email)
                 teacher = Teacher(
-                    schedule_id=row.schedules[-1],
-                    first_name=rows[0],
-                    last_name=rows[1],
-                    email=rows[2],
-                    contract=rows[3],
-                    schedule=rows[4],
+                schedule_id=row.schedules[-1],
+                first_name=data.get("fname"),
+                last_name=data.get("lname"),
+                email=data.get("email"),
+                contract=data.get("contract"),
+                schedule=data.get("schedule"),
                 )
                 teacher.save()
+        else:
+               
+                 
+                row = ScheduleList.objects.get(email=request.user.email)
+               # ifile = open(request.FILES["teachersx"], "rt", encoding="utf8")
+                ifile = request.FILES["teachersx"]
+                decoded_file = ifile.read().decode('utf-8').splitlines()
+                data  = csv.DictReader(decoded_file)
+                print(data)
+                print(type(data))
+                for rows in data:
+                        print(rows)
+                        teacher = Teacher(
+                        schedule_id=row.schedules[-1],
+                        first_name=rows["fname"],
+                        last_name=rows["lname"],
+                        email=rows["email"],
+                        contract=rows["contract"],
+                        schedule=rows["schedule"],
+                        )
+                        teacher.save()
+                # for rows in data:
+                #         print(rows)
+                #         teacher = Teacher(
+                #         schedule_id=row.schedules[-1],
+                #         first_name=rows[0],
+                #         last_name=rows[1],
+                #         email=rows[2],
+                #         contract=rows[3],
+                #         schedule=rows[4],
+                #         )
+                #         teacher.save()
 
 
         
