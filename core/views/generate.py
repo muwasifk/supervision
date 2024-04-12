@@ -64,6 +64,7 @@ class TeachersView(TemplateView):
         return render(request, self.template_name, {"rows": rows})
 
     def post(self, request):
+
         # data = request.POST.dict()
         # row = ScheduleList.objects.get(email=request.user.email)
         # teacher = Teacher(
@@ -89,8 +90,10 @@ class TeachersView(TemplateView):
                 )
                 teacher.save()
 
+
         
         row = ScheduleList.objects.get(email=request.user.email)
         rows = Teacher.objects.all().filter(schedule_id=row.schedules[-1])
 
         return render(request, self.template_name, {"rows": rows})
+        
