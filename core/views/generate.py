@@ -2,6 +2,7 @@ from django.views.generic import TemplateView
 from django.shortcuts import render
 from django.shortcuts import redirect
 import hashlib
+import csv
 
 from core.models import Schedule, ScheduleList, Teacher
 
@@ -63,18 +64,32 @@ class TeachersView(TemplateView):
         return render(request, self.template_name, {"rows": rows})
 
     def post(self, request):
-        data = request.POST.dict()
-        row = ScheduleList.objects.get(email=request.user.email)
-        teacher = Teacher(
-            schedule_id=row.schedules[-1],
-            first_name=data.get("fname"),
-            last_name=data.get("lname"),
-            email=data.get("email"),
-            contract=data.get("contract"),
-            schedule=data.get("schedule"),
-        )
+        # data = request.POST.dict()
+        # row = ScheduleList.objects.get(email=request.user.email)
+        # teacher = Teacher(
+            # schedule_id=row.schedules[-1],
+            # first_name=data.get("fname"),
+            # last_name=data.get("lname"),
+            # email=data.get("email"),
+            # contract=data.get("contract"),
+            # schedule=data.get("schedule"),
 
-        teacher.save()
+        with open('example.csv', 'r') as file:
+            row = ScheduleList.objects.get(email=request.user.email)
+            data = csv.reader(file)
+            for rows in data:
+                print(rows)
+                teacher = Teacher(
+                    schedule_id=row.schedules[-1],
+                    first_name=rows[0],
+                    last_name=rows[1],
+                    email=rows[2],
+                    contract=rows[3],
+                    schedule=rows[4],
+                )
+                teacher.save()
+
+        
         row = ScheduleList.objects.get(email=request.user.email)
         rows = Teacher.objects.all().filter(schedule_id=row.schedules[-1])
 
