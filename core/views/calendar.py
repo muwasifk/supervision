@@ -124,7 +124,7 @@ class CalendarView(TemplateView):
         Generates a calendar template for a given month 
         """
         # Creating a template string for what should be displayed on the frontend
-        calendar_string = '<tr class="text-left align-top">'
+        calendar_string = '<tr class="text-left align-text-top">'
         month_name = [
             "Unknown",
             "January",
@@ -153,10 +153,10 @@ class CalendarView(TemplateView):
         for y in range(7 - empty_days):
             if datetime.date(year, month, iterator).weekday() <= 4:
                 current = construction[global_iterator%12] 
-                calendar_string += f' <td class="h-24 border px-2 py-1">{iterator} <br><br> {current[0]} <br> {current[1]} <br> {current[2]} <br> {current[3]} <br> {current[4]} <br> {current[5]}</td>'
+                calendar_string += f' <td class="h-24 border align-text-top px-2 py-1">{iterator} <br><br> {current[0]} <br> {current[1]} <br> {current[2]} <br> {current[3]} <br> {current[4]} <br> {current[5]}</td>'
                 global_iterator += 1
             else:
-                calendar_string += f' <td class="h-24 border px-2 py-1">{iterator}</td>'
+                calendar_string += f' <td class="h-24 border align-text-top px-2 py-1">{iterator}<br><br><br><br><br><br><br><br></td>'
             iterator += 1
             
             
@@ -167,15 +167,15 @@ class CalendarView(TemplateView):
         for i in range(5):
             if iterator > max_days[1]:
                 continue
-            calendar_string += ' <tr class="text-left align-top">'
+            calendar_string += ' <tr class="text-left align-text-top">'
             for k in range(7):
                 if iterator <= max_days[1]:
                     if datetime.date(year, month, iterator).weekday() <= 4:
                         current = construction[global_iterator%12] 
-                        calendar_string += f' <td class="h-24 border px-2 py-1">{iterator} <br><br> {current[0]} <br> {current[1]} <br> {current[2]} <br> {current[3]} <br> {current[4]} <br> {current[5]}</td>'
+                        calendar_string += f' <td class="h-24 border align-text-top px-2 py-1">{iterator} <br><br> {current[0]} <br> {current[1]} <br> {current[2]} <br> {current[3]} <br> {current[4]} <br> {current[5]}</td>'
                         global_iterator += 1
                     else: 
-                        calendar_string += f' <td class="h-24 border px-2 py-1">{iterator}</td>'
+                        calendar_string += f' <td class="h-24 border align-text-top px-2 py-1">{iterator}<br><br><br><br><br><br><br><br></td>'
                 else:
                     calendar_string += ' <td class="h-24 border bg-gray-50 px-2"></td>'
                 iterator += 1
