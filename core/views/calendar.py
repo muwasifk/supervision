@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 import datetime
 from calendar import monthrange
+from ics import Calendar, Event 
+from django.http import FileResponse
 
 import random
 
@@ -117,7 +119,8 @@ for teacher in sorted_teachers:
 
 global_iterator = 0
 class CalendarView(TemplateView):
-
+    
+    
     @staticmethod
     def generate_calendar(day, month, year):
         """
@@ -146,6 +149,9 @@ class CalendarView(TemplateView):
         iterator = 1
         global global_iterator
         max_days = monthrange(year, month)
+        global c
+        c = Calendar()
+        
 
         # Setting days at the end of the month that should be blank to be blank using tailwind.
         for x in range(empty_days):
@@ -155,11 +161,23 @@ class CalendarView(TemplateView):
                 current = construction[global_iterator%12] 
                 calendar_string += f' <td class="h-24 border align-text-top px-2 py-1">{iterator} <br><br> {current[0]} <br> {current[1]} <br> {current[2]} <br> {current[3]} <br> {current[4]} <br> {current[5]}</td>'
                 global_iterator += 1
+
+                e1 = Event(); e1.name=current[0]; e1.begin = datetime.date(year, month, iterator)
+                e2 = Event(); e2.name=current[0]; e2.begin = datetime.date(year, month, iterator)
+                e3 = Event(); e3.name=current[0]; e3.begin = datetime.date(year, month, iterator)
+                e4 = Event(); e4.name=current[0]; e4.begin = datetime.date(year, month, iterator)
+                e5 = Event(); e5.name=current[0]; e5.begin = datetime.date(year, month, iterator)
+                e6 = Event(); e6.name=current[0]; e6.begin = datetime.date(year, month, iterator)
+
+                c.events.add(e1); c.events.add(e2); c.events.add(e3); 
+                c.events.add(e4); c.events.add(e5); c.events.add(e6); 
+            
+                
             else:
                 calendar_string += f' <td class="h-24 border align-text-top px-2 py-1">{iterator}<br><br><br><br><br><br><br><br></td>'
             iterator += 1
             
-            
+         
 
         calendar_string += " </tr>"
 
@@ -174,6 +192,16 @@ class CalendarView(TemplateView):
                         current = construction[global_iterator%12] 
                         calendar_string += f' <td class="h-24 border align-text-top px-2 py-1">{iterator} <br><br> {current[0]} <br> {current[1]} <br> {current[2]} <br> {current[3]} <br> {current[4]} <br> {current[5]}</td>'
                         global_iterator += 1
+
+                        e1 = Event(); e1.name=current[0]; e1.begin = datetime.date(year, month, iterator)
+                        e2 = Event(); e2.name=current[0]; e2.begin = datetime.date(year, month, iterator)
+                        e3 = Event(); e3.name=current[0]; e3.begin = datetime.date(year, month, iterator)
+                        e4 = Event(); e4.name=current[0]; e4.begin = datetime.date(year, month, iterator)
+                        e5 = Event(); e5.name=current[0]; e5.begin = datetime.date(year, month, iterator)
+                        e6 = Event(); e6.name=current[0]; e6.begin = datetime.date(year, month, iterator)
+
+                        c.events.add(e1); c.events.add(e2); c.events.add(e3); 
+                        c.events.add(e4); c.events.add(e5); c.events.add(e6); 
                     else: 
                         calendar_string += f' <td class="h-24 border align-text-top px-2 py-1">{iterator}<br><br><br><br><br><br><br><br></td>'
                 else:
@@ -181,9 +209,13 @@ class CalendarView(TemplateView):
                 iterator += 1
             calendar_string += " </tr>"
         # Getting the appropiate month name 
+        
         calendar_name = f"{month_name[month]} {year}"
         return calendar_string, calendar_name
-
+    def post(self, request):
+        with open('my.ics', 'w') as f:
+                    f.writelines(c.serialize_iter())   
+        return FileResponse(open('my.ics', 'rb'), as_attachment=True, filename="supervision.ics")
     def get(self, request):
         year = 2024
         month = 9
