@@ -5,10 +5,11 @@ import datetime
 from calendar import monthrange
 from ics import Calendar, Event 
 from django.http import FileResponse
+from core.models import Teacher, ScheduleList
 
 import random
 
-class Teacher:
+class ScheduleTeacher:
     def __init__(self, name: str, schedule: list[list[str]]) -> None:
         self.name = name
         self.schedule = schedule
@@ -42,85 +43,75 @@ class Teacher:
             ]
 
 
-teachers: list[Teacher] = []
-for i in range(75):
-    cur: Teacher = Teacher("TEACH" + str(i), [[], [], [], []])
-    teachers.append(cur)
-
-teachers.append(
-    Teacher(
-        "TEACH75",
-        [
-            ["TAKEN", "TAKEN", "TAKEN", "TAKEN"],
-            ["TAKEN", "TAKEN", "TAKEN", "TAKEN"],
-            ["TAKEN", "TAKEN", "TAKEN", "TAKEN"],
-            ["TAKEN", "TAKEN", "TAKEN", "TAKEN"],
-        ],
-    )
-)
-teachers.append(
-    Teacher(
-        "TEACH76",
-        [
-            ["SPARE", "TAKEN", "TAKEN", "TAKEN"],
-            ["TAKEN", "TAKEN", "TAKEN", "TAKEN"],
-            ["TAKEN", "SPARE", "TAKEN", "TAKEN"],
-            ["TAKEN", "TAKEN", "TAKEN", "TAKEN"],
-        ],
-    )
-)
-
-candidates: list[list[str]] = [[], [], [], [], [], [], [], [], [], [], [], []]
-
-for teacher in teachers:
-    for day in range(0, 4):
-        if teacher.schedule[day][1] == "SPARE" or teacher.schedule[day][2] == "SPARE":
-            candidates[day].append(teacher.name)
-
-            candidates[day + 4].append(teacher.name)
-
-            candidates[day + 8].append(teacher.name)
-
-            teacher.potential.append(day)
-            teacher.potential.append(day + 4)
-            teacher.potential.append(day + 8)
-
-dors: list[int] = []
-for i in range(len(teachers)):
-    dors.append(0)
-
-for teacher in teachers:
-    for cur_day in candidates:
-        if teacher.name in cur_day:
-            dors[int(teacher.name[5:])] += 1
-
-for teacher in teachers:
-    teacher.dor = dors[int(teacher.name[5:])]
-
-sorted_teachers = sorted(teachers, key=lambda x: x.dor)
-
-construction: list[list[str]] = [[], [], [], [], [], [], [], [], [], [], [], []]
-
-for teacher in sorted_teachers:
-    if teacher.dor == 0 or len(teacher.potential) == 0:
-        continue
-
-    choice = random.choice(teacher.potential)
-    while len(construction[choice]) == 6:
-        choice = random.choice(teacher.potential)
-
-    construction[choice].append(teacher.name)
-
-    if len(construction[choice]) == 6:
-        for alt_teacher in sorted_teachers:
-            if choice in alt_teacher.potential:
-                alt_teacher.potential.remove(choice)
-
 
 global_iterator = 0
+construction: list[list[str]] = [[], [], [], [], [], [], [], [], [], [], [], []]
 class CalendarView(TemplateView):
     
-    
+    global construction
+    @staticmethod
+    def construct_days(email):
+        teachers: list[ScheduleTeacher] = []
+        row = ScheduleList.objects.get(email=email)
+        rows = Teacher.objects.all().filter(schedule_id=row.schedules[-1])
+        print(rows)
+        teacher_index_map = {}
+        for i in range(0, len(rows)):
+              schedule_string = rows[i].schedule
+              schedule_list = schedule_string.split("/")
+              day1 = [schedule_list[0], schedule_list[1], schedule_list[2], schedule_list[3]]
+              day2 = [schedule_list[4], schedule_list[5], schedule_list[6], schedule_list[7]] 
+              day3 = [schedule_list[1], schedule_list[0], schedule_list[3], schedule_list[2]]
+              day4 = [schedule_list[5], schedule_list[4], schedule_list[7], schedule_list[6]]
+              cur = ScheduleTeacher(rows[i].first_name + rows[i].last_name, [day1, day2, day3, day4])
+              teachers.append(cur)
+              teacher_index_map[rows[i].first_name + rows[i].last_name] = i
+        # for i in range(75):
+        #         cur: ScheduleTeacher = ScheduleTeacher("TEACH" + str(i), [[], [], [], []])
+        #         teachers.append(cur)
+        #         teacher_index_map["TEACH" + str(i)] = i
+        candidates: list[list[str]] = [[], [], [], [], [], [], [], [], [], [], [], []]
+        for teacher in teachers:
+                for day in range(0, 4):
+                        if teacher.schedule[day][1] == "SPARE" or teacher.schedule[day][2] == "SPARE":
+                                candidates[day].append(teacher.name)
+
+                                candidates[day + 4].append(teacher.name)
+
+                                candidates[day + 8].append(teacher.name)
+
+                                teacher.potential.append(day)
+                                teacher.potential.append(day + 4)
+                                teacher.potential.append(day + 8)
+
+        dors: list[int] = []
+        for i in range(len(teachers)):
+                dors.append(0)
+        for teacher in teachers:
+                for cur_day in candidates:
+                        if teacher.name in cur_day:
+                                dors[teacher_index_map[teacher.name]] += 1
+        for teacher in teachers:
+                teacher.dor = dors[teacher_index_map[teacher.name]]
+        sorted_teachers = sorted(teachers, key=lambda x: x.dor)
+
+        
+
+        for teacher in sorted_teachers:
+                if teacher.dor == 0 or len(teacher.potential) == 0:
+                        continue
+
+                choice = random.choice(teacher.potential)
+                while len(construction[choice]) == 6:
+                        choice = random.choice(teacher.potential)
+
+                construction[choice].append(teacher.name)
+
+                if len(construction[choice]) == 6:
+                        for alt_teacher in sorted_teachers:
+                                if choice in alt_teacher.potential:
+                                        alt_teacher.potential.remove(choice)
+        
     @staticmethod
     def generate_calendar(day, month, year):
         """
@@ -220,6 +211,7 @@ class CalendarView(TemplateView):
         year = 2024
         month = 9
         day = 1
+        self.construct_days(request.user.email)
         # Generating strings for the calendar
         # TODO: Refactor this so it's more maintainable 
         calendar_string1, calendar_name1 = self.generate_calendar(day, month, year)

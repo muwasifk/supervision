@@ -1110,6 +1110,10 @@ input[type="range"]::-ms-fill-lower {
           margin-inline-start: 0.5rem;
 }
 
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
 .block {
   display: block;
 }
@@ -1236,6 +1240,10 @@ input[type="range"]::-ms-fill-lower {
 
 .w-48 {
   width: 12rem;
+}
+
+.w-44 {
+  width: 11rem;
 }
 
 .max-w-md {
@@ -1409,6 +1417,10 @@ input[type="range"]::-ms-fill-lower {
 
 .whitespace-nowrap {
   white-space: nowrap;
+}
+
+.text-wrap {
+  text-wrap: wrap;
 }
 
 .rounded {
