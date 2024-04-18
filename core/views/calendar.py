@@ -5,6 +5,7 @@ import datetime
 from calendar import monthrange
 from ics import Calendar, Event 
 from django.http import FileResponse
+import csv
 from core.models import Teacher, ScheduleList
 
 import random
@@ -111,7 +112,11 @@ class CalendarView(TemplateView):
                         for alt_teacher in sorted_teachers:
                                 if choice in alt_teacher.potential:
                                         alt_teacher.potential.remove(choice)
-        
+global_iterator = 0
+class CalendarView(TemplateView):
+    
+    global data
+    data = [('Date', 'Name')]       
     @staticmethod
     def generate_calendar(day, month, year):
         """
@@ -142,7 +147,6 @@ class CalendarView(TemplateView):
         max_days = monthrange(year, month)
         global c
         c = Calendar()
-        
 
         # Setting days at the end of the month that should be blank to be blank using tailwind.
         for x in range(empty_days):
@@ -162,8 +166,12 @@ class CalendarView(TemplateView):
 
                 c.events.add(e1); c.events.add(e2); c.events.add(e3); 
                 c.events.add(e4); c.events.add(e5); c.events.add(e6); 
-            
-                
+                data.append((f"{month}/{iterator}", f"{current[0]}"))
+                data.append((f"{month}/{iterator}", f"{current[1]}"))
+                data.append((f"{month}/{iterator}", f"{current[2]}"))
+                data.append((f"{month}/{iterator}", f"{current[3]}"))
+                data.append((f"{month}/{iterator}", f"{current[4]}"))
+                data.append((f"{month}/{iterator}", f"{current[5]}"))
             else:
                 calendar_string += f' <td class="h-24 border align-text-top px-2 py-1">{iterator}<br><br><br><br><br><br><br><br></td>'
             iterator += 1
@@ -193,6 +201,12 @@ class CalendarView(TemplateView):
 
                         c.events.add(e1); c.events.add(e2); c.events.add(e3); 
                         c.events.add(e4); c.events.add(e5); c.events.add(e6); 
+                        data.append((f"{month}/{iterator}", f"{current[0]}"))
+                        data.append((f"{month}/{iterator}", f"{current[1]}"))
+                        data.append((f"{month}/{iterator}", f"{current[2]}"))
+                        data.append((f"{month}/{iterator}", f"{current[3]}"))
+                        data.append((f"{month}/{iterator}", f"{current[4]}"))
+                        data.append((f"{month}/{iterator}", f"{current[5]}"))
                     else: 
                         calendar_string += f' <td class="h-24 border align-text-top px-2 py-1">{iterator}<br><br><br><br><br><br><br><br></td>'
                 else:
@@ -204,9 +218,17 @@ class CalendarView(TemplateView):
         calendar_name = f"{month_name[month]} {year}"
         return calendar_string, calendar_name
     def post(self, request):
-        with open('my.ics', 'w') as f:
-                    f.writelines(c.serialize_iter())   
-        return FileResponse(open('my.ics', 'rb'), as_attachment=True, filename="supervision.ics")
+        if 'ics' in request.POST:
+            with open('my.ics', 'w') as f:
+                        f.writelines(c.serialize_iter())   
+            return FileResponse(open('my.ics', 'rb'), as_attachment=True, filename="supervision.ics")
+        if 'csv' in request.POST:
+            with open('my.csv', 'w', newline='') as f:
+                writer = csv.writer(f)
+                for row in data:
+                    writer.writerow(row)
+            return FileResponse(open('my.csv', 'rb'), as_attachment=True, filename="supervision.csv")
+
     def get(self, request):
         year = 2024
         month = 9
