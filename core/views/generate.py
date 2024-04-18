@@ -11,7 +11,7 @@ class GenerateView(TemplateView):
 
     def post(self, request):
         data = request.POST.dict()
-        print(data.get("name"))
+
         schedule = Schedule(
             schedule_id=hashlib.md5(
                 (str(data.get("name")) + str(data.get("school-name"))).encode("utf-8")
@@ -84,11 +84,9 @@ class TeachersView(TemplateView):
                 ifile = request.FILES["teachersx"]
                 decoded_file = ifile.read().decode('utf-8').splitlines()
                 data  = csv.DictReader(decoded_file)
-                print(data)
-                print(type(data))
+
                 for rows in data:
-                        print(rows)
-                        print(rows)
+
                         teacher = Teacher(
                         schedule_id=row.schedules[-1],
                         first_name=rows["fname"],

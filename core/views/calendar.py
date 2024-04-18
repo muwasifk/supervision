@@ -54,11 +54,12 @@ class CalendarView(TemplateView):
         teachers: list[ScheduleTeacher] = []
         row = ScheduleList.objects.get(email=email)
         rows = Teacher.objects.all().filter(schedule_id=row.schedules[-1])
-        print(rows)
+
         teacher_index_map = {}
         for i in range(0, len(rows)):
               schedule_string = rows[i].schedule
               schedule_list = schedule_string.split("/")
+              print(schedule_list)
               day1 = [schedule_list[0], schedule_list[1], schedule_list[2], schedule_list[3]]
               day2 = [schedule_list[4], schedule_list[5], schedule_list[6], schedule_list[7]] 
               day3 = [schedule_list[1], schedule_list[0], schedule_list[3], schedule_list[2]]
@@ -69,6 +70,7 @@ class CalendarView(TemplateView):
         # for i in range(75):
         #         cur: ScheduleTeacher = ScheduleTeacher("TEACH" + str(i), [[], [], [], []])
         #         teachers.append(cur)
+        #         print('/'.join(cur.schedule[0]) + '/' + '/'.join(cur.schedule[1]))
         #         teacher_index_map["TEACH" + str(i)] = i
         candidates: list[list[str]] = [[], [], [], [], [], [], [], [], [], [], [], []]
         for teacher in teachers:
