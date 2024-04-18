@@ -88,6 +88,7 @@ class TeachersView(TemplateView):
                 print(type(data))
                 for rows in data:
                         print(rows)
+                        print(rows)
                         teacher = Teacher(
                         schedule_id=row.schedules[-1],
                         first_name=rows["fname"],
