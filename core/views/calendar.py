@@ -114,8 +114,6 @@ class CalendarView(TemplateView):
                         for alt_teacher in sorted_teachers:
                                 if choice in alt_teacher.potential:
                                         alt_teacher.potential.remove(choice)
-global_iterator = 0
-class CalendarView(TemplateView):
     
     global data
     data = [('Date', 'Name')]       
