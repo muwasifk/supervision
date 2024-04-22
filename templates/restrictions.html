@@ -1,67 +1,73 @@
 {% extends "_base.html" %} {% block content %}
 
 <section class="px-8">
-  <h1 class="my-12 text-center font-extrabold leading-none tracking-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl dark:text-white">Restriction Filters</h1>
-<div class="relative flex flex-row justify-center overflow-x-auto sm:rounded-lg">
-  <table class="w-full ml-8 table-auto text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
-    <thead class="border-separate border-spacing-2 bg-blue-300 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
-      <tr>
-        <th scope="col" class="border border-slate-300 py-6 text-center">Teacher Name</th>
-        <th scope="col" class="border border-slate-300 py-6 text-center">Day Limitations</th>
-        <th scope="col" class="border border-slate-300 py-6 text-center">Slot Limitations</th>
-        <th scope="col" class="border border-slate-300 py-6 text-center">Role Limitations</th>
-        <th scope="col" class="border border-slate-300 py-6 text-center">
-          <span class="sr-only">Edit/Delete</span>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="border-b bg-blue-100 text-center dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
-        <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">John Doe</th>
-        <td class="px-6 py-4">...</td>
-        <td class="px-6 py-4">...</td>
-        <td class="px-6 py-4">...</td>
-        <td class="px-6 py-4 text-right">
-          <div class="flex items-center justify-end font-medium text-blue-600 dark:text-blue-500">
-            <a href="#" class="hover:underline">Edit</a>
-            <span>/</span>
-            <a href="#" class="hover:underline">Delete</a>
-          </div>
-        </td>
-      </tr>
-      <tr class="border-b bg-blue-50 text-center dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
-        <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">John Doe</th>
-        <td class="px-6 py-4">...</td>
-        <td class="px-6 py-4">...</td>
-        <td class="px-6 py-4">...</td>
-        <td class="px-6 py-4 text-right">
-          <div class="flex items-center justify-end font-medium text-blue-600 dark:text-blue-500">
-            <a href="#" class="hover:underline">Edit</a>
-            <span>/</span>
-            <a href="#" class="hover:underline">Delete</a>
-          </div>
-        </td>
-      </tr>
-      <tr class="bg-blue-100 text-center dark:bg-gray-800 dark:hover:bg-gray-600">
-        <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">John Doe</th>
-        <td class="px-6 py-4">...</td>
-        <td class="px-6 py-4">...</td>
-        <td class="px-6 py-4">...</td>
-        <td class="px-6 py-4 text-right">
-          <div class="flex items-center justify-end font-medium text-blue-600 dark:text-blue-500">
-            <a href="#" class="hover:underline">Edit</a>
-            <span>/</span>
-            <a href="#" class="hover:underline">Delete</a>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="mx-2 flex flex-col items-center">
-    <h1 class="text-center font-extrabold leading-none tracking-tight text-gray-900 sm:text-base md:text-lg lg:text-xl dark:text-white">Additonal Filters</h1>
-    <button type="button" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 my-4">Submit</button>
+  <h1
+    class="my-12 text-center font-extrabold leading-none tracking-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl dark:text-white">
+    Restriction Filters</h1>
+  <div class="relative flex flex-row justify-center overflow-x-auto sm:rounded-lg">
+    <table class="w-full ml-8 table-auto text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+      <thead
+        class="border-separate border-spacing-2 bg-blue-300 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="border border-slate-300 py-6 text-center">Teacher Name</th>
+          <th scope="col" class="border border-slate-300 py-6 text-center">Day Limitations</th>
+          <th scope="col" class="border border-slate-300 py-6 text-center">Slot Limitations</th>
+          <th scope="col" class="border border-slate-300 py-6 text-center">Role Limitations</th>
+          <th scope="col" class="border border-slate-300 py-6 text-center">
+            <span class="sr-only">Edit/Delete</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b bg-blue-100 text-center dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
+          <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">John Doe</th>
+          <td class="px-6 py-4">...</td>
+          <td class="px-6 py-4">...</td>
+          <td class="px-6 py-4">...</td>
+          <td class="px-6 py-4 text-right">
+            <div class="flex items-center justify-end font-medium text-blue-600 dark:text-blue-500">
+              <a href="#" class="hover:underline">Edit</a>
+              <span>/</span>
+              <a href="#" class="hover:underline">Delete</a>
+            </div>
+          </td>
+        </tr>
+        <tr class="border-b bg-blue-50 text-center dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
+          <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">John Doe</th>
+          <td class="px-6 py-4">...</td>
+          <td class="px-6 py-4">...</td>
+          <td class="px-6 py-4">...</td>
+          <td class="px-6 py-4 text-right">
+            <div class="flex items-center justify-end font-medium text-blue-600 dark:text-blue-500">
+              <a href="#" class="hover:underline">Edit</a>
+              <span>/</span>
+              <a href="#" class="hover:underline">Delete</a>
+            </div>
+          </td>
+        </tr>
+        <tr class="bg-blue-100 text-center dark:bg-gray-800 dark:hover:bg-gray-600">
+          <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">John Doe</th>
+          <td class="px-6 py-4">...</td>
+          <td class="px-6 py-4">...</td>
+          <td class="px-6 py-4">...</td>
+          <td class="px-6 py-4 text-right">
+            <div class="flex items-center justify-end font-medium text-blue-600 dark:text-blue-500">
+              <a href="#" class="hover:underline">Edit</a>
+              <span>/</span>
+              <a href="#" class="hover:underline">Delete</a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="mx-2 flex flex-col items-center">
+      <h1
+        class="text-center font-extrabold leading-none tracking-tight text-gray-900 sm:text-base md:text-lg lg:text-xl dark:text-white">
+        Additonal Filters</h1>
+      <button type="button"
+        class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 my-4">Submit</button>
+    </div>
   </div>
-</div>
 
 </section>
 

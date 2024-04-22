@@ -7,11 +7,22 @@ import csv
 from core.models import Schedule, ScheduleList, Teacher
 
 class GenerateView(TemplateView):
+    """
+     A view for the generate page form.
+    """
     template_name = "generate.html"
 
     def post(self, request):
+        """
+        Gets user information and authenticates it
+            Args: 
+                request (data): the request of the post function containing the form data.
+            Returns:
+                (Http response)
+        """
         data = request.POST.dict()
 
+        # retrieve data from form
         schedule = Schedule(
             schedule_id=hashlib.md5(
                 (str(data.get("name")) + str(data.get("school-name"))).encode("utf-8")
@@ -25,7 +36,8 @@ class GenerateView(TemplateView):
             country=data.get("country"),
         )
 
-        schedule.save()
+        schedule.save() #save schedule
+        # a check to save the id of the schedules created
         check = ScheduleList.objects.filter(email=request.user.email).values()
         if len(check) == 0:
             id = ScheduleList(
@@ -51,19 +63,37 @@ class GenerateView(TemplateView):
             )
 
             row.save()
+        # after id retrieved, move on to next step (teachers)
         return redirect("/teachers/")
 
 
 class TeachersView(TemplateView):
+    """
+     A view for the teachers page form.
+    """
     template_name = "teachers.html"
 
     def get(self, request):
+        """
+        Gets user information and authenticates it
+            Args: 
+                request (data): the request of the get function containing the form data.
+            Returns:
+                (Http response)
+        """
         row = ScheduleList.objects.get(email=request.user.email)
         rows = Teacher.objects.all().filter(schedule_id=row.schedules[-1])
 
         return render(request, self.template_name, {"rows": rows})
 
     def post(self, request):
+        """
+        Gets user information and authenticates it
+            Args: 
+                request (data): the request of the post function containing the form data.
+            Returns:
+                (Http response)
+        """
         if "contract" in request.POST:
                 data = request.POST.dict()
                 row = ScheduleList.objects.get(email=request.user.email)
