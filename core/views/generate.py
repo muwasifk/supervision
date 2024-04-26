@@ -88,11 +88,11 @@ class TeachersView(TemplateView):
 
     def post(self, request):
         """
-        Gets user information and authenticates it
+        Gets teacher information and saves it
             Args: 
                 request (data): the request of the post function containing the form data.
             Returns:
-                (Http response)
+                (Http response) - rows of teachers in schedule
         """
         if "contract" in request.POST:
                 data = request.POST.dict()

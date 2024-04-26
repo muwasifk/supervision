@@ -19,6 +19,7 @@ from django.urls import path, include
 from core import views
 from django.contrib.auth.decorators import login_required
 
+# All url to view setup done here
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.IndexView.as_view(), name="index"),
