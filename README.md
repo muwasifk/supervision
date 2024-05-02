@@ -257,5 +257,5 @@ Please contact kchaw1@ocdsb.ca, mkamr4@ocdsb.ca, or esui1@ocdsb.ca for support o
 | [Google OAuth Tutorial #2](https://pylessons.com/django-google-oauth) | | Used for creating a sign-in-with-google |
 | [Chat GPT](https://chat.openai.com/) | | Prompt: “I'd like to create a python code that creates a new csv, writes to it with specific data in the python file and has an export feature to download the new csv file” |
 
-**Developer Side*
+**Developer Side**
 | [Environment Keys](https://alicecampkin.medium.com/how-to-set-up-environment-variables-in-django-f3c4db78c55f) | | Used for protecting secret keys |
