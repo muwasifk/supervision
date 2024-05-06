@@ -1,5 +1,5 @@
 # Supervisor
-Supervisor is a middle software platform for teacher supervision-scheduling ease.
+Supervisor is a jumpstart software platform for teacher supervision-scheduling ease.
 
 ## Features
 Through its easy-to-use platform, supervisor can:
