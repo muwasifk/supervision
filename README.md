@@ -13,7 +13,7 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the pac
 ```bash
 pip install -r requirements.txt
 ```
-Use the pip "install -r requirements.txt" command to install all of the Python modules and packages listed in your requirements.txt file. This saves time and effort.
+Use the pip "install -r requirements.txt" command to install all of the Python modules and packages listed in the requirements.txt file. This saves time and effort.
 ## Known Bugs
 At times, the sign in with google feature will not work on the log in page. If this happens, please use the sign in with google button in the home screen on the website OR type into the password box, delete it, and then try the button.
 
