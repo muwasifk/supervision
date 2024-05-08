@@ -55,32 +55,34 @@ class Teacher:
 
 
 teachers: list[Teacher] = []
-for i in range(75):
+for i in range(50):
     cur: Teacher = Teacher("TEACH" + str(i), [[], [], [], []])
     teachers.append(cur)
+# cur: Teacher = Teacher("TEACH0", [["TAKEN", "SPARE", "SPARE", "TAKEN"], ["SPARE", "TAKEN", "TAKEN", "SPARE"], ["SPARE", "TAKEN", "TAKEN", "SPARE"], ["TAKEN", "SPARE", "SPARE", "TAKEN"]])
+# teachers.append(cur)
+# cur: Teacher = Teacher("TEACH1", [["TAKEN", "SPARE", "SPARE", "TAKEN"], ["SPARE", "TAKEN", "TAKEN", "SPARE"], ["SPARE", "TAKEN", "TAKEN", "SPARE"], ["TAKEN", "SPARE", "SPARE", "TAKEN"]])
+# teachers.append(cur)
+# cur: Teacher = Teacher("TEACH2", [["TAKEN", "SPARE", "SPARE", "TAKEN"], ["SPARE", "TAKEN", "TAKEN", "SPARE"], ["SPARE", "TAKEN", "TAKEN", "SPARE"], ["TAKEN", "SPARE", "SPARE", "TAKEN"]])
+# teachers.append(cur)
+# cur: Teacher = Teacher("TEACH3", [["TAKEN", "SPARE", "SPARE", "TAKEN"], ["SPARE", "TAKEN", "TAKEN", "SPARE"], ["SPARE", "TAKEN", "TAKEN", "SPARE"], ["TAKEN", "SPARE", "SPARE", "TAKEN"]])
+# teachers.append(cur)
+# cur: Teacher = Teacher("TEACH4", [["TAKEN", "SPARE", "SPARE", "TAKEN"], ["SPARE", "TAKEN", "TAKEN", "SPARE"], ["SPARE", "TAKEN", "TAKEN", "SPARE"], ["TAKEN", "SPARE", "SPARE", "TAKEN"]])
+# teachers.append(cur)
+# cur: Teacher = Teacher("TEACH5", [["TAKEN", "SPARE", "SPARE", "TAKEN"], ["SPARE", "TAKEN", "TAKEN", "SPARE"], ["SPARE", "TAKEN", "TAKEN", "SPARE"], ["TAKEN", "SPARE", "SPARE", "TAKEN"]])
+# teachers.append(cur)
+# cur: Teacher = Teacher("TEACH6", [["SPARE", "TAKEN", "TAKEN", "SPARE"], ["TAKEN", "SPARE", "SPARE", "TAKEN"], ["TAKEN", "SPARE", "SPARE", "TAKEN"], ["SPARE", "TAKEN", "TAKEN", "SPARE"]])
+# teachers.append(cur)
+# cur: Teacher = Teacher("TEACH7", [["SPARE", "TAKEN", "TAKEN", "SPARE"], ["TAKEN", "SPARE", "SPARE", "TAKEN"], ["TAKEN", "SPARE", "SPARE", "TAKEN"], ["SPARE", "TAKEN", "TAKEN", "SPARE"]])
+# teachers.append(cur)
+# cur: Teacher = Teacher("TEACH8", [["SPARE", "TAKEN", "TAKEN", "SPARE"], ["TAKEN", "SPARE", "SPARE", "TAKEN"], ["TAKEN", "SPARE", "SPARE", "TAKEN"], ["SPARE", "TAKEN", "TAKEN", "SPARE"]])
+# teachers.append(cur)
+# cur: Teacher = Teacher("TEACH9", [["SPARE", "TAKEN", "TAKEN", "SPARE"], ["TAKEN", "SPARE", "SPARE", "TAKEN"], ["TAKEN", "SPARE", "SPARE", "TAKEN"], ["SPARE", "TAKEN", "TAKEN", "SPARE"]])
+# teachers.append(cur)
+# cur: Teacher = Teacher("TEACH10", [["SPARE", "TAKEN", "TAKEN", "SPARE"], ["TAKEN", "SPARE", "SPARE", "TAKEN"], ["TAKEN", "SPARE", "SPARE", "TAKEN"], ["SPARE", "TAKEN", "TAKEN", "SPARE"]])
+# teachers.append(cur)
+# cur: Teacher = Teacher("TEACH11", [["SPARE", "TAKEN", "TAKEN", "SPARE"], ["TAKEN", "SPARE", "SPARE", "TAKEN"], ["TAKEN", "SPARE", "SPARE", "TAKEN"], ["SPARE", "TAKEN", "TAKEN", "SPARE"]])
+# teachers.append(cur)
 
-teachers.append(
-    Teacher(
-        "TEACH75",
-        [
-            ["TAKEN", "TAKEN", "TAKEN", "TAKEN"],
-            ["TAKEN", "TAKEN", "TAKEN", "TAKEN"],
-            ["TAKEN", "TAKEN", "TAKEN", "TAKEN"],
-            ["TAKEN", "TAKEN", "TAKEN", "TAKEN"],
-        ],
-    )
-)
-teachers.append(
-    Teacher(
-        "TEACH76",
-        [
-            ["SPARE", "TAKEN", "TAKEN", "TAKEN"],
-            ["TAKEN", "TAKEN", "TAKEN", "TAKEN"],
-            ["TAKEN", "SPARE", "TAKEN", "TAKEN"],
-            ["TAKEN", "TAKEN", "TAKEN", "TAKEN"],
-        ],
-    )
-)
 
 candidates: list[list[str]] = [[], [], [], [], [], [], [], [], [], [], [], []]
 
@@ -100,12 +102,11 @@ for teacher in teachers:
 dors: list[int] = []
 for i in range(len(teachers)):
     dors.append(0)
-
+    
 for teacher in teachers:
     for cur_day in candidates:
         if teacher.name in cur_day:
             dors[int(teacher.name[5:])] += 1
-
 for teacher in teachers:
     teacher.dor = dors[int(teacher.name[5:])]
 
@@ -113,19 +114,28 @@ sorted_teachers = sorted(teachers, key=lambda x: x.dor)
 
 construction: list[list[str]] = [[], [], [], [], [], [], [], [], [], [], [], []]
 
-for teacher in sorted_teachers:
-    if teacher.dor == 0 or len(teacher.potential) == 0:
-        continue
+# for teacher in sorted_teachers:
+#     if teacher.dor == 0 or len(teacher.potential) == 0:
+#         continue
 
-    choice = random.choice(teacher.potential)
-    while len(construction[choice]) == 6:
-        choice = random.choice(teacher.potential)
+#     choice = random.choice(teacher.potential)
+#     while len(construction[choice]) == 6:
+#         choice = random.choice(teacher.potential)
 
-    construction[choice].append(teacher.name)
+#     construction[choice].append(teacher.name)
 
-    if len(construction[choice]) == 6:
-        for alt_teacher in sorted_teachers:
-            if choice in alt_teacher.potential:
-                alt_teacher.potential.remove(choice)
+#     if len(construction[choice]) == 6:
+#         for alt_teacher in sorted_teachers:
+#             if choice in alt_teacher.potential:
+#                 alt_teacher.potential.remove(choice)
 
+for choice in range(12):
+    for teacher in sorted_teachers:
+        if len(construction[choice]) == 6:
+            break
+        elif choice in teacher.potential:
+            construction[choice].append(teacher.name)
+            teacher.dor -= 1
+            teacher.potential.remove(choice)
+            sorted_teachers = sorted(teachers, key=lambda x: x.dor)
 print(construction)
