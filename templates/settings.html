@@ -3,23 +3,24 @@
 {% block content %}
 
 <section>
-        <h1 class="p-4 text-4xl text-gray-900">Settings</h1>
-        <h1 class="mx-4 text-2xl font-bold text-gray-900">Account</h1>
-        <div class="m-4 flex items-center">
-          <p class="mr-2 text-lg">Name:</p>
-          <div class="rounded-sm bg-gray-200 p-1 text-sm">{{ user.first_name }} {{user.last_name}}</div>
-        </div>
-        <div class="m-4 flex items-center">
-          <p class="mr-2 text-lg">Email:</p>
-          <div class="rounded-sm bg-gray-200 p-1 text-sm">{{ user.username }}</div>
-        </div>
-        <a href="#" class="mx-4 text-xs text-blue-700">Change your password</a>
-        <h1 class="m-4 text-2xl font-bold text-gray-900">School</h1>
-        <div class="mx-4 flex items-center">
-          <p class="mr-2 text-lg">Your School:</p>
-          <div class="rounded-sm bg-gray-200 p-1 text-sm">NOT IMPL</div>
-        </div>
-        <a href="#" class="mx-4 text-xs text-blue-700">Change your school</a>
-      </section>
+  <!-- Page to display user settings! simply text -->
+  <h1 class="p-4 text-4xl text-gray-900">Settings</h1>
+  <h1 class="mx-4 text-2xl font-bold text-gray-900">Account</h1>
+  <div class="m-4 flex items-center">
+    <p class="mr-2 text-lg">Name:</p>
+    <div class="rounded-sm bg-gray-200 p-1 text-sm">{{ user.first_name }} {{user.last_name}}</div>
+  </div>
+  <div class="m-4 flex items-center">
+    <p class="mr-2 text-lg">Email:</p>
+    <div class="rounded-sm bg-gray-200 p-1 text-sm">{{ user.username }}</div>
+  </div>
+  <a href="#" class="mx-4 text-xs text-blue-700">Change your password</a>
+  <h1 class="m-4 text-2xl font-bold text-gray-900">School</h1>
+  <div class="mx-4 flex items-center">
+    <p class="mr-2 text-lg">Your School:</p>
+    <div class="rounded-sm bg-gray-200 p-1 text-sm">NOT IMPL</div>
+  </div>
+  <a href="#" class="mx-4 text-xs text-blue-700">Change your school</a>
+</section>
 
 {% endblock content %}

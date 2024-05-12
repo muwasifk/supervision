@@ -2,62 +2,89 @@
 
 {% block content %}
 
+<!-- FAQ Page Information, Just Text In This Page Through Dropdowns -->
 <section>
-        <h1 class="py-4 px-16 text-4xl text-gray-900">FAQ</h1>
-        <div id="accordion-collapse" data-accordion="collapse" class="px-16">
-          <h2 id="accordion-collapse-heading-1">
-            <button type="button" class="flex w-full items-center justify-between gap-3 rounded-t-lg  p-5 text-2xl font-medium text-black hover:bg-gray-100 focus:ring-1 focus:ring-gray-900 rtl:text-right dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:focus:ring-gray-800" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
-              <span>How do I login/register?</span>
-              <svg data-accordion-icon class="h-3 w-3 shrink-0 rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
-              </svg>
-            </button>
-          </h2>
-          <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
-            <div class="p-5 dark:border-gray-700 dark:bg-gray-900">
-              <p class="mx-4 mb-2 text-black dark:text-gray-400">Check to see if you're not already logged into an account by checking if there is a profile picture in the top right. Otherwise, you'll see a sign in and sign up button as you need! To logout, simply click the avatar button in the top right and click logout. </p>
-            </div>
-          </div>
-          <h2 id="accordion-collapse-heading-2">
-            <button type="button" class="flex w-full items-center justify-between gap-3 rounded-t-lg p-5 text-2xl font-medium text-black hover:bg-gray-100 focus:ring-1 focus:ring-gray-900 rtl:text-right dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:focus:ring-gray-800" data-accordion-target="#accordion-collapse-body-2" aria-expanded="true" aria-controls="accordion-collapse-body-2">
-              <span>How do I create a new schedule?</span>
-              <svg data-accordion-icon class="h-3 w-3 shrink-0 rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
-              </svg>
-            </button>
-          </h2>
-          <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2">
-            <div class="p-5 dark:border-gray-700 dark:bg-gray-900">
-              <p class="mx-4 mb-2 text-black dark:text-gray-400">Head over to the scheduling hub by clicking the "generate" button in the top navigation bar. From there, there'll be instructions on how you can create a new schedule to your liking!</p>
-            </div>
-          </div>
-          <h2 id="accordion-collapse-heading-3">
-            <button type="button" class="flex w-full items-center justify-between gap-3 rounded-t-lg p-5 text-2xl font-medium text-black hover:bg-gray-100 focus:ring-1 focus:ring-gray-900 rtl:text-right dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:focus:ring-gray-800" data-accordion-target="#accordion-collapse-body-3" aria-expanded="true" aria-controls="accordion-collapse-body-3">
-              <span>Who can I contact for any help/inquiries?</span>
-              <svg data-accordion-icon class="h-3 w-3 shrink-0 rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
-              </svg>
-            </button>
-          </h2>
-          <div id="accordion-collapse-body-3" class="hidden" aria-labelledby="accordion-collapse-heading-3">
-            <div class="p-5 dark:border-gray-700 dark:bg-gray-900">
-              <p class="mx-4 mb-2 text-black dark:text-gray-400">Head over to the "about" page and there'll be 4 emails that you can use under the "Contact" section. Any of those emails would be happy to help!</p>
-            </div>
-          </div>
-          <h2 id="accordion-collapse-heading-4">
-            <button type="button" class="flex w-full items-center justify-between gap-3 rounded-t-lg p-5 text-2xl font-medium text-black hover:bg-gray-100 focus:ring-1 focus:ring-gray-900 rtl:text-right dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:focus:ring-gray-800" data-accordion-target="#accordion-collapse-body-4" aria-expanded="true" aria-controls="accordion-collapse-body-4">
-              <span>What do I do if the schedule generated is wrong?</span>
-              <svg data-accordion-icon class="h-3 w-3 shrink-0 rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
-              </svg>
-            </button>
-          </h2>
-          <div id="accordion-collapse-body-4" class="hidden" aria-labelledby="accordion-collapse-heading-4">
-            <div class="p-5 dark:border-gray-700 dark:bg-gray-900">
-              <p class="mx-4 mb-2 text-black dark:text-gray-400">Check to see that all of your input and restrictions were correct. If so, perhaps exporting it as a CSV and updating it to your liking in a CSV editor may work too.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+  <h1 class="py-4 px-16 text-4xl text-gray-900">FAQ</h1>
+  <div id="accordion-collapse" data-accordion="collapse" class="px-16">
+    <h2 id="accordion-collapse-heading-1">
+      <button type="button"
+        class="flex w-full items-center justify-between gap-3 rounded-t-lg  p-5 text-2xl font-medium text-black hover:bg-gray-100 focus:ring-1 focus:ring-gray-900 rtl:text-right dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:focus:ring-gray-800"
+        data-accordion-target="#accordion-collapse-body-1" aria-expanded="true"
+        aria-controls="accordion-collapse-body-1">
+        <span>How do I login/register?</span>
+        <svg data-accordion-icon class="h-3 w-3 shrink-0 rotate-180" aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 5 5 1 1 5" />
+        </svg>
+      </button>
+    </h2>
+    <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
+      <div class="p-5 dark:border-gray-700 dark:bg-gray-900">
+        <p class="mx-4 mb-2 text-black dark:text-gray-400">Check to see if you're not already logged into an account by
+          checking if there is a profile picture in the top right. Otherwise, you'll see a sign in and sign up button as
+          you need! To logout, simply click the avatar button in the top right and click logout. </p>
+      </div>
+    </div>
+    <h2 id="accordion-collapse-heading-2">
+      <button type="button"
+        class="flex w-full items-center justify-between gap-3 rounded-t-lg p-5 text-2xl font-medium text-black hover:bg-gray-100 focus:ring-1 focus:ring-gray-900 rtl:text-right dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:focus:ring-gray-800"
+        data-accordion-target="#accordion-collapse-body-2" aria-expanded="true"
+        aria-controls="accordion-collapse-body-2">
+        <span>How do I create a new schedule?</span>
+        <svg data-accordion-icon class="h-3 w-3 shrink-0 rotate-180" aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 5 5 1 1 5" />
+        </svg>
+      </button>
+    </h2>
+    <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2">
+      <div class="p-5 dark:border-gray-700 dark:bg-gray-900">
+        <p class="mx-4 mb-2 text-black dark:text-gray-400">Head over to the scheduling hub by clicking the "generate"
+          button in the top navigation bar. From there, there'll be instructions on how you can create a new schedule to
+          your liking!</p>
+      </div>
+    </div>
+    <h2 id="accordion-collapse-heading-3">
+      <button type="button"
+        class="flex w-full items-center justify-between gap-3 rounded-t-lg p-5 text-2xl font-medium text-black hover:bg-gray-100 focus:ring-1 focus:ring-gray-900 rtl:text-right dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:focus:ring-gray-800"
+        data-accordion-target="#accordion-collapse-body-3" aria-expanded="true"
+        aria-controls="accordion-collapse-body-3">
+        <span>Who can I contact for any help/inquiries?</span>
+        <svg data-accordion-icon class="h-3 w-3 shrink-0 rotate-180" aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 5 5 1 1 5" />
+        </svg>
+      </button>
+    </h2>
+    <div id="accordion-collapse-body-3" class="hidden" aria-labelledby="accordion-collapse-heading-3">
+      <div class="p-5 dark:border-gray-700 dark:bg-gray-900">
+        <p class="mx-4 mb-2 text-black dark:text-gray-400">Head over to the "about" page and there'll be 4 emails that
+          you can use under the "Contact" section. Any of those emails would be happy to help!</p>
+      </div>
+    </div>
+    <h2 id="accordion-collapse-heading-4">
+      <button type="button"
+        class="flex w-full items-center justify-between gap-3 rounded-t-lg p-5 text-2xl font-medium text-black hover:bg-gray-100 focus:ring-1 focus:ring-gray-900 rtl:text-right dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:focus:ring-gray-800"
+        data-accordion-target="#accordion-collapse-body-4" aria-expanded="true"
+        aria-controls="accordion-collapse-body-4">
+        <span>What do I do if the schedule generated is wrong?</span>
+        <svg data-accordion-icon class="h-3 w-3 shrink-0 rotate-180" aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 5 5 1 1 5" />
+        </svg>
+      </button>
+    </h2>
+    <div id="accordion-collapse-body-4" class="hidden" aria-labelledby="accordion-collapse-heading-4">
+      <div class="p-5 dark:border-gray-700 dark:bg-gray-900">
+        <p class="mx-4 mb-2 text-black dark:text-gray-400">Check to see that all of your input and restrictions were
+          correct. If so, perhaps exporting it as a CSV and updating it to your liking in a CSV editor may work too.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 {% endblock content %}

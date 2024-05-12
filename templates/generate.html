@@ -1,35 +1,22 @@
 {% extends "_base.html" %} {% block content %}
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
   integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
 <section
-  class="bg-white dark:bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]"
->
-  <div
-    class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-10 relative"
-  >
+  class="bg-white dark:bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-10 relative">
     <h1
-      class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white"
-    >
+      class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
       Scheduling Hub
     </h1>
-    <p
-      class="mb-8 text-lg text-left font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200"
-    >
-    All schedules are generated at the scheduling hub! For further information, please see our "How it Works" section below.
+    <p class="mb-8 text-lg text-left font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">
+      All schedules are generated at the scheduling hub! For further information, please see our "How it Works" section
+      below.
     </p>
-    <button
-      data-modal-target="crud-modal"
-      data-modal-toggle="crud-modal"
-      class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
-    >
+    <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
+      class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
       <span
-        class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
-      >
+        class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
         Generate New Schedule
       </span>
     </button>
@@ -38,13 +25,9 @@
 
 <section class="bg-white dark:bg-gray-900">
   <div class="mx-auto max-w-screen-xl px-4 pt-3 lg:py-4">
-    <div
-      class="mb-4 rounded-lg border border-gray-200 bg-gray-50 p-8 md:p-12 dark:border-gray-700 dark:bg-gray-800"
-    >
-      <a
-        href="#"
-        class="mb-2 inline-flex items-center rounded-md bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:bg-gray-700 dark:text-blue-400"
-      >
+    <div class="mb-4 rounded-lg border border-gray-200 bg-gray-50 p-8 md:p-12 dark:border-gray-700 dark:bg-gray-800">
+      <a href="#"
+        class="mb-2 inline-flex items-center rounded-md bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:bg-gray-700 dark:text-blue-400">
         <i class="fa-regular fa-calendar mr-1"></i>
         February 27, 2024
       </a>
@@ -54,23 +37,17 @@
       <p class="mb-1 text-lg font-normal text-gray-500 dark:text-gray-400">
         Some information related to this schedule
       </p>
-      <ul
-        class="max-w-md mb-3 list-inside list-disc text-gray-500 dark:text-gray-400"
-      >
+      <ul class="max-w-md mb-3 list-inside list-disc text-gray-500 dark:text-gray-400">
         <li>Creator: Justin Oh</li>
         <li>Date Generated :</li>
         <li>Last Edit</li>
       </ul>
-      <button
-        type="button"
-        class="text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900"
-      >
+      <button type="button"
+        class="text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900">
         View Schedule
       </button>
-      <button
-        type="button"
-        class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900"
-      >
+      <button type="button"
+        class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900">
         Edit Schedule
       </button>
     </div>
@@ -83,47 +60,35 @@
       How it works
     </h1>
     <p>
-      This page includes a button for creating a new schedule, as well as any previously made schedules. To create a new schedule, click the Generate button. Following that, a popup will appear asking for the name, school, city, and country of your chosen schedule. Then you'll be led to the "Teacher Data" page. This page requires you to enter all of the teachers that need to be scheduled, including their name, contract (what percentage of total days they have to work), schedule (what feasible periods they can supervise), and email address. From there, you'll be taken to the restriction filters page, where you can set any limitations on specific teachers. Finally, after submitting, you will be taken to a calendar view of the generated schedule, as well as a CSV file for any additional changes.
+      This page includes a button for creating a new schedule, as well as any previously made schedules. To create a new
+      schedule, click the Generate button. Following that, a popup will appear asking for the name, school, city, and
+      country of your chosen schedule. Then you'll be led to the "Teacher Data" page. This page requires you to enter
+      all of the teachers that need to be scheduled, including their name, contract (what percentage of total days they
+      have to work), schedule (what feasible periods they can supervise), and email address. From there, you'll be taken
+      to the restriction filters page, where you can set any limitations on specific teachers. Finally, after
+      submitting, you will be taken to a calendar view of the generated schedule, as well as a CSV file for any
+      additional changes.
     </p>
   </div>
 </section>
 
-<div
-  id="crud-modal"
-  tabindex="-1"
-  aria-hidden="true"
+<div id="crud-modal" tabindex="-1" aria-hidden="true"
   class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
-  data-modal-backdrop="static"
->
+  data-modal-backdrop="static">
   <div class="relative p-4 w-full max-w-md max-h-full">
     <!-- Modal content -->
     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
       <!-- Modal header -->
-      <div
-        class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
-      >
+      <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
           Configure New Schedule
         </h3>
-        <button
-          type="button"
+        <button type="button"
           class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-          data-modal-toggle="crud-modal"
-        >
-          <svg
-            class="w-3 h-3"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 14 14"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-            />
+          data-modal-toggle="crud-modal">
+          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
           </svg>
           <span class="sr-only">Close modal</span>
         </button>
@@ -133,70 +98,32 @@
         {% csrf_token %}
         <div class="grid gap-4 mb-4 grid-cols-2">
           <div class="col-span-2">
-            <label
-              for="name"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Schedule Name</label
-            >
-            <input
-              type="text"
-              name="name"
-              id="name"
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Schedule Name</label>
+            <input type="text" name="name" id="name"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="2024 Schedule"
-              required=""
-            />
+              placeholder="2024 Schedule" required="" />
           </div>
           <div class="col-span-2">
-            <label
-              for="name"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >School Name</label
-            >
-            <input
-              type="text"
-              name="school-name"
-              id="school-name"
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">School Name</label>
+            <input type="text" name="school-name" id="school-name"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="Merivale High School"
-              required=""
-            />
+              placeholder="Merivale High School" required="" />
           </div>
           <div class="col-span-2 sm:col-span-1">
-            <label
-              for="price"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >City</label
-            >
-            <input
-              type="text"
-              name="city"
-              id="city"
+            <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City</label>
+            <input type="text" name="city" id="city"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="Ottawa"
-              required=""
-            />
+              placeholder="Ottawa" required="" />
           </div>
           <div class="col-span-2 sm:col-span-1">
-            <label
-              for="price"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Country</label
-            >
-            <input
-              type="text"
-              name="country"
-              id="country"
+            <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country</label>
+            <input type="text" name="country" id="country"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="Canada"
-              required=""
-            />
+              placeholder="Canada" required="" />
           </div>
         </div>
-        <button
-          type="submit"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
+        <button type="submit"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
           Generate
         </button>
       </form>

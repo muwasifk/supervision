@@ -9,7 +9,7 @@ from django.views.generic import RedirectView
 
 class RegisterView(TemplateView):
     """
-    A view that allows the user to register
+    A view that allows the user to register.
     """
 
     template_name = "register.html"
@@ -56,6 +56,11 @@ class RegisterView(TemplateView):
     def pword_match(password, cpassword):
         """
         Checks if the password and confirm password are the same
+        Args: 
+            password (string): the password to be verified
+            cpassword (string): the password to be verified with
+        Returns:
+            True or False depending on if the password and cpassword are the same
         """
         return password == cpassword
 
@@ -63,12 +68,20 @@ class RegisterView(TemplateView):
     def email_is_valid(email):
         """
         Checks if there is an @ and . in the email. Also makes sure there's no spaces.
+        Args: 
+            email (string): the email to be verified
+        Returns:
+            True or False depending on if the email is valid or not.
         """
         return "@" in email and "." in email and not " " in email
 
     def post(self, request):
         """
         Gets information about the user's email, name, and password and saves it into the database if valid
+        Args: 
+            request (data): the request of the post function containing the form data.
+        Returns:
+            (Http response)
         """
         # Storing the information inputted by the user in variables
         data = request.POST.dict()
@@ -115,7 +128,7 @@ class RegisterView(TemplateView):
 
 class LoginView(TemplateView):
     """
-    A view that allows the user to login
+    A view that allows the user to login.
     """
 
     template_name = "login.html"
@@ -123,6 +136,10 @@ class LoginView(TemplateView):
     def post(self, request):
         """
         Gets user information and authenticates it
+        Args: 
+            request (data): the request of the post function containing the form data.
+        Returns:
+            (Http response)
         """
         # Putting the email and password into variables
         data = request.POST.dict()
@@ -131,14 +148,14 @@ class LoginView(TemplateView):
         # Using authenticate to make sure that the password is correct and that the email is registered.
         user = authenticate(username=email, password=password)
         if user is not None:
-            login(request, user)
-
+            login(request, user) #login if valid
+        
         return render(request, self.template_name)
 
 
 class LogoutView(RedirectView):
     """
-    A view that logout user and redirect to homepage.
+    A view to logout user and redirect to homepage.
     """
 
     permanent = False
@@ -150,20 +167,31 @@ class LogoutView(RedirectView):
         Logout user and redirect to target url.
         """
         if self.request.user.is_authenticated:
-            logout(self.request)
-        return super(LogoutView, self).get_redirect_url(*args, **kwargs)
+            logout(self.request) #logout user
+        return super(LogoutView, self).get_redirect_url(*args, **kwargs) #return to home page.
 
 
 class ChangePasswordView(RedirectView):
+    """
+     A view for saving changing user password
+    """
+
     template_name = "change_password.html"
-    # Saving the new password to the database after checking that the user knows the old password
+
     def post(self, request):
+        """
+        Gets user information and authenticates it
+            Args: 
+                request (data): the request of the post function containing the form data.
+            Returns:
+                (Http response)
+        """
         data = request.POST.dict()
         old_password = data.get("password")
         new_password = data.get("newpassword")
         new_password_c = data.get("confpassword")
 
         request.user.password = new_password
-        request.user.save()
+        request.user.save() # save new password
 
         return render(request, self.template_name)

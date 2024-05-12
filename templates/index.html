@@ -1,62 +1,96 @@
 {% extends "_base.html" %}
 {% load socialaccount %}
 {% block content %}
+
+<!-- Homepage, buttons to get started, and text on the software here -->
 <section class="grid grid-cols-2 bg-slate-800">
-        <div class="m-4 px-4 py-20">
-          <h1 class="mb-4 bg-gradient-to-r from-indigo-300 to-purple-600 bg-clip-text text-4xl  leading-none tracking-tight text-transparent md:text-5xl lg:text-6xl font-extrabold">supervisor</h1>
-          <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl">Putting the <span class="bg-gradient-to-r from-indigo-300 to-purple-400 bg-clip-text text-transparent">super</span> in supervision since 2023.</p>
-          <button href="" class="group relative mb-2 me-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 group-hover:from-purple-600 group-hover:to-blue-500 dark:text-white dark:focus:ring-blue-800">
-            <span class="relative rounded-md bg-slate-800 px-5 py-2.5 text-white transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900"><a href="/register/"> Register </a></span>
-          </button>
-          <button class="group relative mb-2 me-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-cyan-200 group-hover:from-cyan-500 group-hover:to-blue-500 dark:text-white dark:focus:ring-cyan-800">
-            <span class="relative rounded-md bg-slate-800 px-5 py-2.5 text-white transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900"><a href="/login/"> Log In </a></span>
-          </button>
-          <br />
-          <button type="button" class="mb-2 me-2 inline-flex items-center rounded-lg bg-[#4285F4] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#4285F4]/90 focus:outline-none focus:ring-4 focus:ring-[#4285F4]/50 dark:focus:ring-[#4285F4]/55">
-            <svg class="me-2 h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 19">
-              <path fill-rule="evenodd" d="M8.842 18.083a8.8 8.8 0 0 1-8.65-8.948 8.841 8.841 0 0 1 8.8-8.652h.153a8.464 8.464 0 0 1 5.7 2.257l-2.193 2.038A5.27 5.27 0 0 0 9.09 3.4a5.882 5.882 0 0 0-.2 11.76h.124a5.091 5.091 0 0 0 5.248-4.057L14.3 11H9V8h8.34c.066.543.095 1.09.088 1.636-.086 5.053-3.463 8.449-8.4 8.449l-.186-.002Z" clip-rule="evenodd" />
-            </svg>
-            <a href="{% provider_login_url 'google'%}?next=/">Sign in with Google</a>
-          </button>
-        </div>
-      </section>
-    
-      <section class="grid grid-cols-3 bg-white dark:bg-slate-500">
-        <div class="mx-4 max-w-screen-xl my-4 px-4 py-4 bg-slate-900 rounded-md">
-          <h1 class="mb-2 bg-white bg-clip-text text-2xl font-extrabold leading-none tracking-tight text-transparent md:text-3xl lg:text-4xl">Customize</h1>
-          <p class="mb-1 bg-white bg-clip-text font-light leading-none tracking-tight text-transparent md:text-base lg:text-lg">
-            With supervision, you can customize all the parameters specific to you needs. You can add as many employees of different statuses with different constraints as you wish -- our platform just <span class="italic">works<span>.
-          </p>
-        </div>
-    
-        <div class="mx-4 max-w-screen-xl my-4 px-4 py-4 bg-slate-900 rounded-md">
-          <h1 class="mb-2 bg-white bg-clip-text text-2xl font-extrabold leading-none tracking-tight text-transparent md:text-3xl lg:text-4xl">Generate</h1>
-          <p class="mb-1 bg-white bg-clip-text font-light leading-none tracking-tight text-transparent md:text-base lg:text-lg">
-            After setting up all the statuses and details of your employees, you're just one click  away from having a complete supervision schedule. In fact, even with larger institutions, we'll have your schedule ready in under one second.
-          </p>
-        </div>
-    
-        <div class="mx-4 max-w-screen-xl my-4 px-4 py-4 bg-slate-900 rounded-md">
-          <h1 class="mb-2 bg-white bg-clip-text text-2xl font-extrabold leading-none tracking-tight text-transparent md:text-3xl lg:text-4xl">Adjust</h1>
-          <p class="mb-1 bg-white bg-clip-text font-light leading-none tracking-tight text-transparent md:text-base lg:text-lg">
-            Have some little adjustments to make before exporting? No problem. We give you a friendly calendar to fine tune all the little details before sharing the schedule with all your employees.
-          </p>
-        </div>
-      </section>
-    
-      <hr class="h-px my-2 bg-black border-0 dark:bg-gray-700">
-    
-      <section class="bg-white">
-        <h1 class="m-5 bg-black bg-clip-text font-normal leading-none tracking-tight text-transparent sm:text-3xl md:text-4xl lg:text-5xl text-center">
-          Get Started Today!
-        </h1>
-        <div class="grid grid-cols-2 m-4 sm:px-32 md:px-40 lg:px-72">
-          <button class="group relative mb-2 me-2 inline-flex items-center justify-center overflow-hidden rounded-xl border-solid border-2 border-black p-2 text-sm font-medium text-black hover:text-white hover:bg-black">
-            <a href="/register/">Create an Account</a>
-          </button>
-          <button class="group relative mb-2 me-2 inline-flex items-center justify-center overflow-hidden rounded-xl border-solid border-2 border-white bg-black p-2 text-sm font-medium text-white hover:border-black hover:text-black hover:bg-white">
-            <a href="/login/">Use an Existing Account</a>
-          </button>
-        </div>
-      </section>
+  <div class="m-4 px-4 py-20">
+    <h1
+      class="mb-4 bg-gradient-to-r from-indigo-300 to-purple-600 bg-clip-text text-4xl  leading-none tracking-tight text-transparent md:text-5xl lg:text-6xl font-extrabold">
+      supervisor</h1>
+    <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl">Putting the <span
+        class="bg-gradient-to-r from-indigo-300 to-purple-400 bg-clip-text text-transparent">super</span> in supervision
+      since 2023.</p>
+    <!-- buttons to get started -->
+    <button href=""
+      class="group relative mb-2 me-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 group-hover:from-purple-600 group-hover:to-blue-500 dark:text-white dark:focus:ring-blue-800">
+      <span
+        class="relative rounded-md bg-slate-800 px-5 py-2.5 text-white transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900"><a
+          href="/register/"> Register </a></span>
+    </button>
+    <button
+      class="group relative mb-2 me-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-cyan-200 group-hover:from-cyan-500 group-hover:to-blue-500 dark:text-white dark:focus:ring-cyan-800">
+      <span
+        class="relative rounded-md bg-slate-800 px-5 py-2.5 text-white transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900"><a
+          href="/login/"> Log In </a></span>
+    </button>
+    <br />
+    <button type="button"
+      class="mb-2 me-2 inline-flex items-center rounded-lg bg-[#4285F4] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#4285F4]/90 focus:outline-none focus:ring-4 focus:ring-[#4285F4]/50 dark:focus:ring-[#4285F4]/55">
+      <svg class="me-2 h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+        viewBox="0 0 18 19">
+        <path fill-rule="evenodd"
+          d="M8.842 18.083a8.8 8.8 0 0 1-8.65-8.948 8.841 8.841 0 0 1 8.8-8.652h.153a8.464 8.464 0 0 1 5.7 2.257l-2.193 2.038A5.27 5.27 0 0 0 9.09 3.4a5.882 5.882 0 0 0-.2 11.76h.124a5.091 5.091 0 0 0 5.248-4.057L14.3 11H9V8h8.34c.066.543.095 1.09.088 1.636-.086 5.053-3.463 8.449-8.4 8.449l-.186-.002Z"
+          clip-rule="evenodd" />
+      </svg>
+      <a href="{% provider_login_url 'google'%}?next=/">Sign in with Google</a>
+    </button>
+  </div>
+</section>
+
+<!-- description with more buttons to get started -->
+<section class="grid grid-cols-3 bg-white dark:bg-slate-500">
+  <div class="mx-4 max-w-screen-xl my-4 px-4 py-4 bg-slate-900 rounded-md">
+    <h1
+      class="mb-2 bg-white bg-clip-text text-2xl font-extrabold leading-none tracking-tight text-transparent md:text-3xl lg:text-4xl">
+      Customize</h1>
+    <p
+      class="mb-1 bg-white bg-clip-text font-light leading-none tracking-tight text-transparent md:text-base lg:text-lg">
+      With supervision, you can customize all the parameters specific to you needs. You can add as many employees of
+      different statuses with different constraints as you wish -- our platform just <span class="italic">works<span>.
+    </p>
+  </div>
+
+  <div class="mx-4 max-w-screen-xl my-4 px-4 py-4 bg-slate-900 rounded-md">
+    <h1
+      class="mb-2 bg-white bg-clip-text text-2xl font-extrabold leading-none tracking-tight text-transparent md:text-3xl lg:text-4xl">
+      Generate</h1>
+    <p
+      class="mb-1 bg-white bg-clip-text font-light leading-none tracking-tight text-transparent md:text-base lg:text-lg">
+      After setting up all the statuses and details of your employees, you're just one click away from having a complete
+      supervision schedule. In fact, even with larger institutions, we'll have your schedule ready in under one second.
+    </p>
+  </div>
+
+  <div class="mx-4 max-w-screen-xl my-4 px-4 py-4 bg-slate-900 rounded-md">
+    <h1
+      class="mb-2 bg-white bg-clip-text text-2xl font-extrabold leading-none tracking-tight text-transparent md:text-3xl lg:text-4xl">
+      Adjust</h1>
+    <p
+      class="mb-1 bg-white bg-clip-text font-light leading-none tracking-tight text-transparent md:text-base lg:text-lg">
+      Have some little adjustments to make before exporting? No problem. We give you a friendly calendar to fine tune
+      all the little details before sharing the schedule with all your employees.
+    </p>
+  </div>
+</section>
+
+<hr class="h-px my-2 bg-black border-0 dark:bg-gray-700">
+
+<!-- More buttons to get started with supervision -->
+<section class="bg-white">
+  <h1
+    class="m-5 bg-black bg-clip-text font-normal leading-none tracking-tight text-transparent sm:text-3xl md:text-4xl lg:text-5xl text-center">
+    Get Started Today!
+  </h1>
+  <div class="grid grid-cols-2 m-4 sm:px-32 md:px-40 lg:px-72">
+    <button
+      class="group relative mb-2 me-2 inline-flex items-center justify-center overflow-hidden rounded-xl border-solid border-2 border-black p-2 text-sm font-medium text-black hover:text-white hover:bg-black">
+      <a href="/register/">Create an Account</a>
+    </button>
+    <button
+      class="group relative mb-2 me-2 inline-flex items-center justify-center overflow-hidden rounded-xl border-solid border-2 border-white bg-black p-2 text-sm font-medium text-white hover:border-black hover:text-black hover:bg-white">
+      <a href="/login/">Use an Existing Account</a>
+    </button>
+  </div>
+</section>
 {% endblock content %}
