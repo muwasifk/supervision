@@ -31,9 +31,7 @@ urlpatterns = [
     path("logout/", views.LogoutView.as_view(), name="logout"),
     path("generate/", views.GenerateView.as_view(), name="generate"),
     path("", include("allauth.urls")),
-    path("change-password/", views.ChangePasswordView.as_view(), name="change"),
     path("teachers/", views.TeachersView.as_view(), name="teachers"),
-    path("restrictions/", views.RestrictionsView.as_view(), name="restrictions"),
     path("calendar/", views.CalendarView.as_view(), name="calendar"),
 
 ]

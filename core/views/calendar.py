@@ -68,11 +68,7 @@ class CalendarView(TemplateView):
               cur = ScheduleTeacher(rows[i].first_name + rows[i].last_name, [day1, day2, day3, day4])
               teachers.append(cur)
               teacher_index_map[rows[i].first_name + rows[i].last_name] = i
-        # for i in range(75):
-        #         cur: ScheduleTeacher = ScheduleTeacher("TEACH" + str(i), [[], [], [], []])
-        #         teachers.append(cur)
-        #         print('/'.join(cur.schedule[0]) + '/' + '/'.join(cur.schedule[1]))
-        #         teacher_index_map["TEACH" + str(i)] = i
+
         candidates: list[list[str]] = [[], [], [], [], [], [], [], [], [], [], [], []]
         for teacher in teachers:
                 for day in range(0, 4):

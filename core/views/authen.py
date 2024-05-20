@@ -1,3 +1,11 @@
+"""
+authen.py
+ICS4U SDP 
+Eric Sui, Muhammad Wasif Kamran, Karan Chawla 
+All relevant views for registration and logging in
+"""
+
+# Django imports
 from django.shortcuts import render
 
 from django.views.generic import TemplateView, CreateView
@@ -9,9 +17,9 @@ from django.views.generic import RedirectView
 
 class RegisterView(TemplateView):
     """
-    A view that allows the user to register.
+    CBV for registration page 
     """
-
+    # Uses the register.html file for the frontend
     template_name = "register.html"
 
     @staticmethod
@@ -128,9 +136,10 @@ class RegisterView(TemplateView):
 
 class LoginView(TemplateView):
     """
-    A view that allows the user to login.
+    CBV for login page
     """
 
+    # Use the login.html file 
     template_name = "login.html"
 
     def post(self, request):
@@ -148,14 +157,14 @@ class LoginView(TemplateView):
         # Using authenticate to make sure that the password is correct and that the email is registered.
         user = authenticate(username=email, password=password)
         if user is not None:
-            login(request, user) #login if valid
+            login(request, user) 
         
         return render(request, self.template_name)
 
 
 class LogoutView(RedirectView):
     """
-    A view to logout user and redirect to homepage.
+    CBV for logging out
     """
 
     permanent = False
@@ -165,33 +174,12 @@ class LogoutView(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         """
         Logout user and redirect to target url.
+        Note: this is a template logout view given in the Django documentation 
         """
+        # Make sure the user is actually logged in before attempting to log out
         if self.request.user.is_authenticated:
-            logout(self.request) #logout user
-        return super(LogoutView, self).get_redirect_url(*args, **kwargs) #return to home page.
+            logout(self.request) 
+        return super(LogoutView, self).get_redirect_url(*args, **kwargs) 
 
 
-class ChangePasswordView(RedirectView):
-    """
-     A view for saving changing user password
-    """
 
-    template_name = "change_password.html"
-
-    def post(self, request):
-        """
-        Gets user information and authenticates it
-            Args: 
-                request (data): the request of the post function containing the form data.
-            Returns:
-                (Http response)
-        """
-        data = request.POST.dict()
-        old_password = data.get("password")
-        new_password = data.get("newpassword")
-        new_password_c = data.get("confpassword")
-
-        request.user.password = new_password
-        request.user.save() # save new password
-
-        return render(request, self.template_name)

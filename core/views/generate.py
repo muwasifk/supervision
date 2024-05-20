@@ -1,15 +1,24 @@
+"""
+generate.py
+ICS4U SDP
+Muhammad Wasif Kamran, Karan Chawla, Eric Sui 
+All relevant views for preprocessing data before generating a calendar 
+"""
+# Django imports
 from django.views.generic import TemplateView
 from django.shortcuts import render
 from django.shortcuts import redirect
+from core.models import Schedule, ScheduleList, Teacher
+
+# Other Python imports (for hashing and for CSV handling)
 import hashlib
 import csv
 
-from core.models import Schedule, ScheduleList, Teacher
-
 class GenerateView(TemplateView):
     """
-     A view for the generate page form.
+    CBV for generate page 
     """
+    # Use generate.html file 
     template_name = "generate.html"
 
     def post(self, request):
@@ -22,7 +31,7 @@ class GenerateView(TemplateView):
         """
         data = request.POST.dict()
 
-        # retrieve data from form
+        # Parse data from form
         schedule = Schedule(
             schedule_id=hashlib.md5(
                 (str(data.get("name")) + str(data.get("school-name"))).encode("utf-8")
@@ -36,10 +45,13 @@ class GenerateView(TemplateView):
             country=data.get("country"),
         )
 
-        schedule.save() #save schedule
-        # a check to save the id of the schedules created
+        # Save it to database 
+        schedule.save() 
+
+        # A check to save the id of the schedules created
         check = ScheduleList.objects.filter(email=request.user.email).values()
         if len(check) == 0:
+            # If no previous schedules found, create a new row
             id = ScheduleList(
                 email=request.user.email,
                 schedules=[
@@ -53,6 +65,7 @@ class GenerateView(TemplateView):
 
             id.save()
         else:
+            # If previous schedules found for this account, append to existing row
             row = ScheduleList.objects.get(email=request.user.email)
             row.schedules.append(
                 hashlib.md5(
@@ -63,24 +76,27 @@ class GenerateView(TemplateView):
             )
 
             row.save()
+
         # after id retrieved, move on to next step (teachers)
         return redirect("/teachers/")
 
 
 class TeachersView(TemplateView):
     """
-     A view for the teachers page form.
+    CBV for teacher data page 
     """
+    # Use teachers.html 
     template_name = "teachers.html"
 
     def get(self, request):
         """
-        Gets user information and authenticates it
+        Handles GET requests from the browser 
             Args: 
-                request (data): the request of the get function containing the form data.
+                request (data): the request of the HTML header 
             Returns:
                 (Http response)
         """
+        # Find the row of the schedule and then the rows of the teachers to be displayed in a HTML table 
         row = ScheduleList.objects.get(email=request.user.email)
         rows = Teacher.objects.all().filter(schedule_id=row.schedules[-1])
 
@@ -90,11 +106,12 @@ class TeachersView(TemplateView):
         """
         Gets teacher information and saves it
             Args: 
-                request (data): the request of the post function containing the form data.
+                request (data): the data from the POST request
             Returns:
                 (Http response) - rows of teachers in schedule
         """
-        if "contract" in request.POST:
+        if "contract" in request.POST: # Differentiates between submit POST and form POST 
+                # Parse data then save to database
                 data = request.POST.dict()
                 row = ScheduleList.objects.get(email=request.user.email)
                 teacher = Teacher(
@@ -106,17 +123,15 @@ class TeachersView(TemplateView):
                 schedule=data.get("schedule"),
                 )
                 teacher.save()
-        else:
-               
-                 
+        else: # This means that user submitted a CSV file 
+                # Read data from CSV file
                 row = ScheduleList.objects.get(email=request.user.email)
-               # ifile = open(request.FILES["teachersx"], "rt", encoding="utf8")
                 ifile = request.FILES["teachersx"]
                 decoded_file = ifile.read().decode('utf-8').splitlines()
                 data  = csv.DictReader(decoded_file)
 
+                # Using CSV data, create Teacher objects and save to the database
                 for rows in data:
-
                         teacher = Teacher(
                         schedule_id=row.schedules[-1],
                         first_name=rows["fname"],
@@ -126,20 +141,7 @@ class TeachersView(TemplateView):
                         schedule=rows["schedule"],
                         )
                         teacher.save()
-                # for rows in data:
-                #         print(rows)
-                #         teacher = Teacher(
-                #         schedule_id=row.schedules[-1],
-                #         first_name=rows[0],
-                #         last_name=rows[1],
-                #         email=rows[2],
-                #         contract=rows[3],
-                #         schedule=rows[4],
-                #         )
-                #         teacher.save()
-
-
-        
+                        
         row = ScheduleList.objects.get(email=request.user.email)
         rows = Teacher.objects.all().filter(schedule_id=row.schedules[-1])
 
