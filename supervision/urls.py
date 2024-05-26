@@ -33,5 +33,4 @@ urlpatterns = [
     path("", include("allauth.urls")),
     path("teachers/", views.TeachersView.as_view(), name="teachers"),
     path("calendar/", views.CalendarView.as_view(), name="calendar"),
-
 ]

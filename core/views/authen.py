@@ -15,10 +15,14 @@ from django.contrib.auth import logout
 from django.views.generic import RedirectView
 
 
+# Resource: https://docs.djangoproject.com/en/5.0/topics/auth/default/
+
+
 class RegisterView(TemplateView):
     """
-    CBV for registration page 
+    CBV for registration page
     """
+
     # Uses the register.html file for the frontend
     template_name = "register.html"
 
@@ -26,7 +30,7 @@ class RegisterView(TemplateView):
     def password_is_valid(password):
         """
         A function that checks if the inputted password is valid
-        Args: 
+        Args:
             password (string): the password to be verified
         Returns:
             True or False depending on if the password is valid
@@ -64,7 +68,7 @@ class RegisterView(TemplateView):
     def pword_match(password, cpassword):
         """
         Checks if the password and confirm password are the same
-        Args: 
+        Args:
             password (string): the password to be verified
             cpassword (string): the password to be verified with
         Returns:
@@ -76,7 +80,7 @@ class RegisterView(TemplateView):
     def email_is_valid(email):
         """
         Checks if there is an @ and . in the email. Also makes sure there's no spaces.
-        Args: 
+        Args:
             email (string): the email to be verified
         Returns:
             True or False depending on if the email is valid or not.
@@ -86,7 +90,7 @@ class RegisterView(TemplateView):
     def post(self, request):
         """
         Gets information about the user's email, name, and password and saves it into the database if valid
-        Args: 
+        Args:
             request (data): the request of the post function containing the form data.
         Returns:
             (Http response)
@@ -139,13 +143,13 @@ class LoginView(TemplateView):
     CBV for login page
     """
 
-    # Use the login.html file 
+    # Use the login.html file
     template_name = "login.html"
 
     def post(self, request):
         """
         Gets user information and authenticates it
-        Args: 
+        Args:
             request (data): the request of the post function containing the form data.
         Returns:
             (Http response)
@@ -157,8 +161,8 @@ class LoginView(TemplateView):
         # Using authenticate to make sure that the password is correct and that the email is registered.
         user = authenticate(username=email, password=password)
         if user is not None:
-            login(request, user) 
-        
+            login(request, user)
+
         return render(request, self.template_name)
 
 
@@ -174,12 +178,9 @@ class LogoutView(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         """
         Logout user and redirect to target url.
-        Note: this is a template logout view given in the Django documentation 
+        Note: this is a template logout view given in the Django documentation
         """
         # Make sure the user is actually logged in before attempting to log out
         if self.request.user.is_authenticated:
-            logout(self.request) 
-        return super(LogoutView, self).get_redirect_url(*args, **kwargs) 
-
-
-
+            logout(self.request)
+        return super(LogoutView, self).get_redirect_url(*args, **kwargs)
