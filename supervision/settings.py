@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
+    # Reference: https://medium.com/@infowithkiiru/django-user-registration-with-google-67524cce5ab7, https://pylessons.com/django-google-oauth
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
@@ -87,6 +88,7 @@ WSGI_APPLICATION = "supervision.wsgi.application"
 
 DATABASES = {
     "default": {
+        # Reference: https://alicecampkin.medium.com/how-to-set-up-environment-variables-in-django-f3c4db78c55f
         "ENGINE": env("DATABASE_ENGINE"),
         "HOST": env("DATABASE_HOST"),
         "NAME": env("DATABASE_NAME"),

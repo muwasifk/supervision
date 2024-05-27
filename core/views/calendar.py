@@ -352,6 +352,7 @@ class CalendarView(TemplateView):
                 open("my.ics", "rb"), as_attachment=True, filename="supervision.ics"
             )
 
+        # Reference: https://chat.openai.com/
         # If the POST request is related to the CSV file, write the CSV file and download it
         if "csv" in request.POST:
             with open("my.csv", "w", newline="") as f:
